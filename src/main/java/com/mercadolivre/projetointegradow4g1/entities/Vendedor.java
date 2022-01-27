@@ -15,15 +15,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="tb_vendedor")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="tb_vendedor")
 public class Vendedor {
-	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	

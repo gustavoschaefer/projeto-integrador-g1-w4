@@ -1,12 +1,6 @@
 package com.mercadolivre.projetointegradow4g1.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,15 +10,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="tb_produto")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "tb_produto")
 public class Produto {
-	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@JsonIgnore
@@ -32,7 +26,7 @@ public class Produto {
 	@MapsId
 	private Lote lote;
 	
-	
+	@ManyToOne
 	private Vendedor vendedor;
 
 }

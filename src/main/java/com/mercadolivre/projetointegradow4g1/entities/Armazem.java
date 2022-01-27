@@ -21,9 +21,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Armazem {
-	
+
+    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Id
 	private Long id;
 	private String nome;
 	private String descricao;

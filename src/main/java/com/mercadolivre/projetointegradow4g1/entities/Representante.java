@@ -20,14 +20,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Representante {
-	
+
+    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Id
 	private Long id;
 	private String nome;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "id", nullable = false)
+	@JoinColumn(name = "id_armazem", nullable = false)
 	private Armazem armazem;
 
 }

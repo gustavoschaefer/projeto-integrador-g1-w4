@@ -26,14 +26,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Setor {
 
+    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Id
 	private Long id;
 	private String nome;
 	private TipoDeSetor tipo;
 
 	@ManyToOne
-	@JoinColumn(name = "id", nullable = false)
+	@JoinColumn(name = "id_armazem", nullable = false)
 	private Armazem armazem;
 
 	@OneToMany(mappedBy = "setor")
