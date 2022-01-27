@@ -37,6 +37,6 @@ public class Setor {
 	private Armazem armazem;
 
 	@OneToMany(mappedBy = "setor")
-	private Set<Pedido> pedidos;
+	private Set<RegistroDeEstoque> registroDeEstoques;
 
 }

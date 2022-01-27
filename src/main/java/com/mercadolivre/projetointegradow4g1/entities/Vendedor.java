@@ -28,6 +28,6 @@ public class Vendedor {
 	private String nome;
 	
 	@OneToMany(mappedBy = "vendedor")
-	private Set<Produto> produtos;
+	private Set<Anuncio> anuncios;
 
 }

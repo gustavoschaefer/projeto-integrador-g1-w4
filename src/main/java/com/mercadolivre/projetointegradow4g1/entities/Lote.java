@@ -22,10 +22,10 @@ public class Lote {
     private Integer quantidade;
 
     @OneToOne
-    Produto produto;
+    Anuncio anuncio;
 
     @ManyToOne
-    @JoinColumn(name = "id_pedido", nullable = false, insertable = false)
-    private Pedido pedido;
+    @JoinColumn(name = "id_registroDeEstoque", nullable = false)
+    private RegistroDeEstoque registroDeEstoque;
 
 }

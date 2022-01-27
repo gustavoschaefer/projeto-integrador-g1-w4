@@ -23,10 +23,7 @@ public class Produto {
 	
 	@JsonIgnore
 	@OneToOne
-	@MapsId
-	private Lote lote;
-	
-	@ManyToOne
-	private Vendedor vendedor;
+	private Anuncio anuncio;
+
 
 }

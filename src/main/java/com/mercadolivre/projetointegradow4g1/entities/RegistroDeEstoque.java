@@ -11,12 +11,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="tb_pedido")
+@Table(name="tb_estoque")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pedido {
+public class RegistroDeEstoque {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Pedido {
 	@ManyToOne
 	private Setor setor;
 
-	@OneToMany(mappedBy = "pedido")
+	@OneToMany(mappedBy = "registroDeEstoque")
 	private Set<Lote> lotes;
 
 }
