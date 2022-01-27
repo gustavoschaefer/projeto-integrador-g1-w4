@@ -33,7 +33,6 @@ public class Setor {
 	private TipoDeSetor tipo;
 
 	@ManyToOne
-	@JoinColumn(name = "id_armazem", nullable = false)
 	private Armazem armazem;
 
 	@OneToMany(mappedBy = "setor")

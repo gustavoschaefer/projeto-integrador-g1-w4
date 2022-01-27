@@ -27,7 +27,6 @@ public class Representante {
 	private String nome;
 
 	@ManyToOne
-	@JoinColumn(name = "id_armazem", nullable = false)
 	private Armazem armazem;
 
 }

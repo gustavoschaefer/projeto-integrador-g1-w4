@@ -8,23 +8,25 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "tb_lote")
-@Data
-@Builder
-@NoArgsConstructor
+@Table(name = "tb_anuncio")
 @AllArgsConstructor
-public class Lote {
+@NoArgsConstructor
+@Builder
+@Data
+@Entity
+public class Anuncio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer quantidade;
+
+    String titulo;
+    String descricao;
 
     @OneToOne
-    Anuncio anuncio;
+    Produto produto;
 
     @ManyToOne
-    private RegistroDeEstoque registroDeEstoque;
+    Vendedor vendedor;
 
 }
