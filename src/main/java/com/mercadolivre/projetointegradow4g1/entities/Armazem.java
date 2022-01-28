@@ -33,10 +33,8 @@ public class Armazem {
 
   @NotEmpty
 	@NotNull
-	private String nome;
-
-	private String descricao;
-	
+	private String nome, descricao;
+  
 	@Transient //TODO retirar quando integrar com Setor
 	@OneToMany(mappedBy = "armazem")
 	@JsonIgnore
