@@ -25,11 +25,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Representante {
 
-    @Id
+  @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-    @NotEmpty
+  @NotEmpty
 	@NotNull
 	private String nome;
 
