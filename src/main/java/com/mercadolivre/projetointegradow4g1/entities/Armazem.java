@@ -29,9 +29,7 @@ public class Armazem {
 
     @NotEmpty
 	@NotNull
-	private String nome;
-
-	private String descricao;
+	private String nome, descricao;
 
 	@OneToMany(mappedBy = "armazem")
 	@JsonIgnore
