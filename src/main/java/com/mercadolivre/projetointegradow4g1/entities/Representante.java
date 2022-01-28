@@ -26,7 +26,7 @@ public class Representante {
 	private Long id;
 	private String nome;
 
-	@ManyToOne
+	@ManyToOne()
 	private Armazem armazem;
 
 }
