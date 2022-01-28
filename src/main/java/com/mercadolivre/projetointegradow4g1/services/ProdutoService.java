@@ -1,16 +1,14 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.Produto;
-import com.mercadolivre.projetointegradow4g1.entities.enums.TipoDeSetor;
-import com.mercadolivre.projetointegradow4g1.repositories.ProdutoRepository;
-import org.springframework.stereotype.Service;
-
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.mercadolivre.projetointegradow4g1.entities.Produto;
+import com.mercadolivre.projetointegradow4g1.repositories.ProdutoRepository;
 
 
 @Service

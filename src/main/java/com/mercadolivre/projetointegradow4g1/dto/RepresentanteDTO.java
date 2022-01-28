@@ -1,27 +1,12 @@
 package com.mercadolivre.projetointegradow4g1.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.mercadolivre.projetointegradow4g1.entities.Armazem;
-import com.mercadolivre.projetointegradow4g1.entities.Representante;
-import com.mercadolivre.projetointegradow4g1.entities.Setor;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class RepresentanteDTO {
 
 //    @NotEmpty
