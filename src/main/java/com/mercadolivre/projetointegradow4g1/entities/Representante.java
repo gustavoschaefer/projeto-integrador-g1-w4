@@ -7,7 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,12 +25,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Representante {
 
-    @Id
+  @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+  @NotEmpty
+	@NotNull
 	private String nome;
 
-	@ManyToOne()
+	@NotNull
+	@ManyToOne
 	private Armazem armazem;
 
 }
