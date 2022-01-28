@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @Controller
 @RequestMapping("/anuncio")
@@ -23,8 +23,18 @@ public class AnuncioController {
     public ResponseEntity<Anuncio> postAnuncio(@RequestBody Anuncio anuncio, UriComponentsBuilder uriBuilder){
         anuncioService.postAnuncio(anuncio);
         URI uri = uriBuilder
-                .path("/anuncio/listar")
+                .path("/anuncio/{id}")
                 .build().toUri();
         return ResponseEntity.created(uri).body(anuncio);
+    }
+
+    @GetMapping("/listar")
+    public ResponseEntity<List<Anuncio>> listar() {
+        return ResponseEntity.ok(anuncioService.listar());
+    }
+
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<Anuncio> getAnuncio(@PathVariable Long id){
+        return ResponseEntity.ok(anuncioService.buscarAnuncio(id));
     }
 }

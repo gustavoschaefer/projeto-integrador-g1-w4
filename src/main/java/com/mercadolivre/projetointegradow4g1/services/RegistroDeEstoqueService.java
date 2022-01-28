@@ -1,5 +1,6 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
+import com.mercadolivre.projetointegradow4g1.entities.Anuncio;
 import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
 import com.mercadolivre.projetointegradow4g1.entities.Setor;
 import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
@@ -9,25 +10,29 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class RegistroDeEstoqueService {
 
-    @Autowired
+
     private RegistroDeEstoqueRepository registroDeEstoqueRepository;
 
-    @Autowired
-    private SetorRepository setorRepository;
+    public RegistroDeEstoqueService(RegistroDeEstoqueRepository registroDeEstoqueRepository) {
+        this.registroDeEstoqueRepository = registroDeEstoqueRepository;
+    }
 
+    public RegistroDeEstoque postRegistroDeEstoque(RegistroDeEstoque registroDeEstoque){
+        return registroDeEstoqueRepository.save(registroDeEstoque);
+    }
 
-    public ResponseEntity<RegistroDeEstoque> postRegistroDeEstoque(RegistroDeEstoque registroDeEstoque){
+    public List<RegistroDeEstoque> listar(){
+        return registroDeEstoqueRepository.findAll();
+    }
 
-           try {
-               registroDeEstoqueRepository.save(registroDeEstoque);
-           }catch (Exception e){
-               return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-           }
-           return ResponseEntity.status(HttpStatus.CREATED).build();
+    public RegistroDeEstoque buscarRegistroDeEstoque(Long id){
+        Optional<RegistroDeEstoque> registroDeEstoque = registroDeEstoqueRepository.findById(id);
+        return registroDeEstoque.orElse(new RegistroDeEstoque());
     }
 }

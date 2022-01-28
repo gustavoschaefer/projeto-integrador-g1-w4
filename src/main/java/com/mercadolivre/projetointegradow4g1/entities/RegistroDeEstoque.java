@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class RegistroDeEstoque {
 	private Long id;
 	private Instant data;
 
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Setor setor;
 

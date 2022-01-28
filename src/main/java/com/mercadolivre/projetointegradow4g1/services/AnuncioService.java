@@ -8,24 +8,33 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.swing.text.html.Option;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class AnuncioService {
 
-    @Autowired
+
     private AnuncioRepository anuncioRepository;
 
- /*   public void postAnuncio(Anuncio anuncio){
-        this.anuncioRepository.save(anuncio);
-    }*/
+    public AnuncioService(AnuncioRepository anuncioRepository) {
+        this.anuncioRepository = anuncioRepository;
+    }
 
+    public Anuncio postAnuncio(Anuncio anuncio){
+        return anuncioRepository.save(anuncio);
+    }
 
-public ResponseEntity<Anuncio> postAnuncio(Anuncio anuncio){
-        try {
-            anuncioRepository.save(anuncio);
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public List<Anuncio> listar(){
+        return anuncioRepository.findAll();
+    }
+
+    public Anuncio buscarAnuncio(Long id){
+        Optional<Anuncio> anuncio = anuncioRepository.findById(id);
+        return anuncio.orElse(new Anuncio());
     }
 
 }
+
+

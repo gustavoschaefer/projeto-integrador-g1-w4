@@ -5,12 +5,11 @@ import com.mercadolivre.projetointegradow4g1.services.RegistroDeEstoqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @Controller
 @RequestMapping("/registroestoque")
@@ -27,6 +26,16 @@ public class RegistroDeEstoqueController {
                 .path("/anuncio/listar")
                 .build().toUri();
         return ResponseEntity.created(uri).body(registroDeEstoque);
+    }
+
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<RegistroDeEstoque> getRegistroEstoque(@PathVariable Long id){
+        return ResponseEntity.ok(registroDeEstoqueService.buscarRegistroDeEstoque(id));
+    }
+
+    @GetMapping("/listar")
+    public ResponseEntity<List<RegistroDeEstoque>> listar(){
+        return ResponseEntity.ok(registroDeEstoqueService.listar());
     }
 
 }
