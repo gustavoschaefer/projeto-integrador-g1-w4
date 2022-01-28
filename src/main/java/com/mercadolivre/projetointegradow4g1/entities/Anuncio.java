@@ -23,10 +23,10 @@ public class Anuncio {
     String titulo;
     String descricao;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.MERGE)
     Produto produto;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     Vendedor vendedor;
 
 }

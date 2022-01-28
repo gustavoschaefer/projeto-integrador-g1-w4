@@ -25,10 +25,10 @@ public class RegistroDeEstoque {
 	private Instant data;
 
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Setor setor;
 
-	@OneToMany(mappedBy = "registroDeEstoque",cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "registroDeEstoque",cascade = CascadeType.MERGE)
 	private Set<Lote> lotes;
 
 }
