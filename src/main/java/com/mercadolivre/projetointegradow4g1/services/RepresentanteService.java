@@ -17,7 +17,12 @@ public class RepresentanteService {
     }
 
     public Representante salvar(Representante representante) {
-        return representanteRepository.save(representante);
+        if (ArmazemService.valida(representante)) {
+            return representanteRepository.save(representante);
+        } else {
+            throw new RuntimeException("Armazem invalido");
+        }
+
     }
 
     public List<Representante> listar() {

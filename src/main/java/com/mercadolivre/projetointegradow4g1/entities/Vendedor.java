@@ -12,6 +12,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,14 +26,17 @@ import lombok.NoArgsConstructor;
 @Table(name = "tb_vendedor")
 public class Vendedor {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+  
+    
     @NotNull
     @NotEmpty(message = "O nome do Vendedor é obrigatório.")
     private String nome;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "vendedor")
     private Set<Anuncio> anuncios;
 
