@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -24,11 +25,15 @@ public class RegistroDeEstoque {
 	private Long id;
 	private Instant data;
 
-	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Setor setor;
 
-	@OneToMany(mappedBy = "registroDeEstoque",cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy = "registroDeEstoque",cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Set<Lote> lotes;
+
+	@NotNull
+	@ManyToOne
+	private Representante representante;
 
 }

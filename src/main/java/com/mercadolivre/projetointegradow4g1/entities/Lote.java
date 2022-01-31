@@ -1,22 +1,14 @@
 package com.mercadolivre.projetointegradow4g1.entities;
 
 
-import java.time.Instant;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Table(name = "tb_lote")
@@ -39,12 +31,14 @@ public class Lote {
     private Instant dataFabricacao;             
     private Instant dataValidade;
     private Double temperaturaAtual;
-    private Double temperaturaMinima;    
+    private Double temperaturaMinima;
 
-    @Transient // TODO retirar após integrar com anúncio
-    @OneToOne
-    private Anuncio anuncio;
+    @ManyToOne
+    private Produto produto;
 
     @ManyToOne
     private RegistroDeEstoque registroDeEstoque;
+
+    @OneToOne
+    private Anuncio anuncio;
 }

@@ -32,7 +32,6 @@ public class Setor {
 	private String nome;
 	private CondicaoConservacao tipo;
 
-	@Transient // TODO retirar após integrar com armazem
 	@ManyToOne
 	private Armazem armazem;
 		

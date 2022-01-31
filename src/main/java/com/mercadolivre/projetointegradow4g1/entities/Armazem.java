@@ -27,15 +27,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Armazem {
 
-  @Id
+  	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-  @NotEmpty
+	@NotEmpty
 	@NotNull
 	private String nome, descricao;
-  
-	@Transient //TODO retirar quando integrar com Setor
+
 	@OneToMany(mappedBy = "armazem")
 	@JsonIgnore
 	private Set<Setor> setores;

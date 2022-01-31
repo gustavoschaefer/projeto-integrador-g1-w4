@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import com.mercadolivre.projetointegradow4g1.entities.Anuncio;
 import com.mercadolivre.projetointegradow4g1.entities.Lote;
 
+import com.mercadolivre.projetointegradow4g1.entities.Produto;
+import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,8 +26,8 @@ public class LoteDTO {
 	private Instant dataValidade;
 	private Double temperaturaAtual;
 	private Double temperaturaMinima;
-	private Anuncio anuncio;
-	
+	private Produto produto;
+
 	public static Lote converte(LoteDTO dto) {
 		Lote lote = Lote.builder()
 				.quantidadeInicial(dto.getQuantidadeInicial())
@@ -34,7 +36,7 @@ public class LoteDTO {
 				.dataValidade(dto.getDataValidade())
 				.temperaturaAtual(dto.getTemperaturaAtual())
 				.temperaturaMinima(dto.getTemperaturaMinima())
-				.anuncio(dto.getAnuncio())
+				.produto(dto.getProduto())
 				.build();
 		return lote;
 	}
@@ -47,7 +49,7 @@ public class LoteDTO {
 				.dataValidade(lote.getDataValidade())
 				.temperaturaAtual(lote.getTemperaturaAtual())
 				.temperaturaMinima(lote.getTemperaturaMinima())
-				.anuncio(lote.getAnuncio())
+				.produto(lote.getProduto())
 				.build();
 	}
 	

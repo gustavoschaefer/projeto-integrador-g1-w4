@@ -20,13 +20,13 @@ public class Anuncio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    String titulo;
-    String descricao;
+    private String titulo;
+    private String descricao;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    Produto produto;
+    private Lote lote;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    Vendedor vendedor;
+    private Vendedor vendedor;
 
 }
