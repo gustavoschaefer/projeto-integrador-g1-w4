@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.mercadolivre.projetointegradow4g1.dto.RepresentanteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,22 +27,22 @@ public class RepresentanteController {
     private RepresentanteService representanteService;
 
     @PostMapping("/salvar")
-    public ResponseEntity<Representante> salvar(@Valid @RequestBody Representante representante, UriComponentsBuilder uriComponentsBuilder) {
-        Representante rep = representanteService.salvar(representante);
+    public ResponseEntity<RepresentanteDTO> salvar(@Valid @RequestBody RepresentanteDTO dto, UriComponentsBuilder uriComponentsBuilder) {
+        Representante rep = representanteService.salvar(RepresentanteDTO.converte(dto));
         URI uri = uriComponentsBuilder
                 .path("/representante/{id}")
                 .buildAndExpand(rep.getId())
                 .toUri();
-        return ResponseEntity.created(uri).body(rep);
+        return ResponseEntity.created(uri).body(RepresentanteDTO.converte(rep));
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Representante>> listar() {
-        return ResponseEntity.ok(representanteService.listar());
+    public ResponseEntity<List<RepresentanteDTO>> listar() {
+        return ResponseEntity.ok(RepresentanteDTO.converte(representanteService.listar()));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Representante> buscar(@PathVariable Long id) {
-        return ResponseEntity.ok(representanteService.buscar(id));
+    public ResponseEntity<RepresentanteDTO> buscar(@PathVariable Long id) {
+        return ResponseEntity.ok(RepresentanteDTO.converte(representanteService.buscar(id)));
     }
 }
