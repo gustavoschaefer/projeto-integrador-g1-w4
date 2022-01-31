@@ -2,17 +2,17 @@ package com.mercadolivre.projetointegradow4g1.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_lote")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,9 +26,9 @@ public class Lote {
     private Integer quantidadeInicial;
     
     @Column(nullable = false)
-    private Integer quantidadeAtual;    
+    private Integer quantidadeAtual;
     
-    private Instant dataFabricacao;             
+    private Instant dataFabricacao;
     private Instant dataValidade;
     private Double temperaturaAtual;
     private Double temperaturaMinima;
@@ -36,9 +36,20 @@ public class Lote {
     @ManyToOne
     private Produto produto;
 
-    @ManyToOne
-    private RegistroDeEstoque registroDeEstoque;
+    @ManyToMany(mappedBy = "lotes")
+    @JsonIgnore
+    private Set<RegistroDeEstoque> registroDeEstoques;
 
-    @OneToOne
-    private Anuncio anuncio;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Lote)) return false;
+        Lote lote = (Lote) o;
+        return getId().equals(lote.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 }

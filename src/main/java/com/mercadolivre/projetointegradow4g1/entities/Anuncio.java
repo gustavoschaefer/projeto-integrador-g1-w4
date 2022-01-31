@@ -1,10 +1,7 @@
 package com.mercadolivre.projetointegradow4g1.entities;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,7 +9,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
+@Getter
+@Setter
 @Entity
 public class Anuncio {
 
@@ -23,10 +21,10 @@ public class Anuncio {
     private String titulo;
     private String descricao;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     private Lote lote;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     private Vendedor vendedor;
 
 }

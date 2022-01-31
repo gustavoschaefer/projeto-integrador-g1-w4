@@ -2,6 +2,7 @@ package com.mercadolivre.projetointegradow4g1.dto;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.mercadolivre.projetointegradow4g1.entities.Anuncio;

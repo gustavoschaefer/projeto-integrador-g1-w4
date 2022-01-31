@@ -6,15 +6,13 @@ import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.*;
+import lombok.*;
 
 @Entity
 @Table(name="tb_estoque")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,11 +23,10 @@ public class RegistroDeEstoque {
 	private Long id;
 	private Instant data;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	private Setor setor;
 
-	@OneToMany(mappedBy = "registroDeEstoque",cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	@JsonIgnore
+	@ManyToMany
 	private Set<Lote> lotes;
 
 	@NotNull

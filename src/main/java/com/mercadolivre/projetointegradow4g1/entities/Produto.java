@@ -2,19 +2,18 @@ package com.mercadolivre.projetointegradow4g1.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Data
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tb_produto")
@@ -31,12 +30,21 @@ public class Produto {
 	private Long volume_uni;
 	private CondicaoConservacao conservacao;
 
+	@OneToMany(mappedBy = "produto")
 	@JsonIgnore
-	@OneToMany(mappedBy = "produto",cascade = CascadeType.MERGE)
 	private Set<Lote> lotes;
 
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Produto)) return false;
+		Produto produto = (Produto) o;
+		return getId().equals(produto.getId());
+	}
 
-
-
+	@Override
+	public int hashCode() {
+		return Objects.hash(getId());
+	}
 }

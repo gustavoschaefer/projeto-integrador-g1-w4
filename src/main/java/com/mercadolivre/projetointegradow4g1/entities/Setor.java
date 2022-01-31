@@ -11,16 +11,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "tb_setor")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,6 +35,7 @@ public class Setor {
 	private Armazem armazem;
 		
 	@OneToMany(mappedBy = "setor")
+	@JsonIgnore
 	private Set<RegistroDeEstoque> registroDeEstoques;
 
 }
