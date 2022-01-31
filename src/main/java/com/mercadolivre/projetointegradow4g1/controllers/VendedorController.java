@@ -1,6 +1,7 @@
 package com.mercadolivre.projetointegradow4g1.controllers;
 
 
+import com.mercadolivre.projetointegradow4g1.dto.VendedorDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Vendedor;
 import com.mercadolivre.projetointegradow4g1.services.VendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,22 +21,22 @@ public class VendedorController {
     VendedorService vendedorService;
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<Vendedor> cadastraVendedor(@Valid @RequestBody Vendedor vendedor, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<VendedorDTO> cadastraVendedor(@Valid @RequestBody Vendedor vendedor, UriComponentsBuilder uriBuilder) {
         vendedorService.salvarVendedor(vendedor);
         URI uri = uriBuilder
                 .path("/vendedores/{id}")
                 .buildAndExpand(vendedor.getId())
                 .toUri();
-        return ResponseEntity.created(uri).body(vendedor);
+        return ResponseEntity.created(uri).body(VendedorDTO.converte(vendedor));
     }
 
     @GetMapping("/obtem")
-    public ResponseEntity<List<Vendedor>> obtemVendedores() {
-        return ResponseEntity.ok(this.vendedorService.listaVendedor());
+    public ResponseEntity<List<VendedorDTO>> obtemVendedores() {
+        return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.listaVendedor()));
     }
 
     @GetMapping("/obtem/{id}")
-    public ResponseEntity<Vendedor> obtemVendedor(@PathVariable Long id) {
-        return ResponseEntity.ok(this.vendedorService.buscarVendedor(id));
+    public ResponseEntity<VendedorDTO> obtemVendedor(@PathVariable Long id) {
+        return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.buscarVendedor(id)));
     }
 }

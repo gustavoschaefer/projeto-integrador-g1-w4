@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import com.mercadolivre.projetointegradow4g1.dto.ProdutoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,26 +30,23 @@ public class ProdutoController {
     ProdutoService produtoService;
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<Produto> cadastraProduto(@Valid @RequestBody Produto produto, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<ProdutoDTO> cadastraProduto(@Valid @RequestBody Produto produto, UriComponentsBuilder uriBuilder) {
         produtoService.salvarProduto(produto);
         URI uri = uriBuilder
                 .path("/produtos/{id}")
                 .buildAndExpand(produto.getId())
                 .toUri();
-        return ResponseEntity.created(uri).body(produto);
+        return ResponseEntity.created(uri).body(ProdutoDTO.converte(produto));
     }
 
     @GetMapping("/obtem")
-    public ResponseEntity<List<Produto>> obtemProdutos(@RequestParam Map<String, String> conservacao) {
-        return ResponseEntity.ok(this.produtoService.listaProdutos(conservacao));
+    public ResponseEntity<List<ProdutoDTO>> obtemProdutos(@RequestParam Map<String, String> conservacao) {
+        return ResponseEntity.ok(ProdutoDTO.converte(produtoService.listaProdutos(conservacao)));
     }
 
     @GetMapping("/obtem/{id}")
-    public ResponseEntity<Produto> obtemProduto(@PathVariable Long id) {
-        return ResponseEntity.ok(produtoService.buscarProduto(id));
+    public ResponseEntity<ProdutoDTO> obtemProduto(@PathVariable Long id) {
+        return ResponseEntity.ok(ProdutoDTO.converte(produtoService.buscarProduto(id)));
     }
-//    @GetMapping("/obtem/{conservacao}")
-//    public ResponseEntity<List<Produto>> obtemProdutos(@PathVariable String conservacao){
-//        return ResponseEntity.ok(this.produtoService.listaProdutos(conservacao));
-//    }
+
 }

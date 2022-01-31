@@ -1,10 +1,9 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import com.mercadolivre.projetointegradow4g1.entities.Lote;
 import org.springframework.stereotype.Service;
 
 import com.mercadolivre.projetointegradow4g1.entities.Produto;
@@ -49,4 +48,11 @@ public class ProdutoService {
         }
         return produtos;
     }
+
+//    public List<Produto> listaProdutosPorLote(Map<String, String> param){
+//        List<Produto> produtos = produtoRepository.findAll();
+//        Set<Lote> lotes = new HashSet<>();
+//
+//
+//    }
 }

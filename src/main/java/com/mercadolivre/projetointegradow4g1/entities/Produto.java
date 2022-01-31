@@ -31,7 +31,6 @@ public class Produto {
 	private CondicaoConservacao conservacao;
 
 	@OneToMany(mappedBy = "produto")
-	@JsonIgnore
 	private Set<Lote> lotes;
 
 
