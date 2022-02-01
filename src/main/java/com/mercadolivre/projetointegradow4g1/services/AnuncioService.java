@@ -3,10 +3,13 @@ package com.mercadolivre.projetointegradow4g1.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.mercadolivre.projetointegradow4g1.dto.AnuncioDTO;
 import org.springframework.stereotype.Service;
 
 import com.mercadolivre.projetointegradow4g1.entities.Anuncio;
 import com.mercadolivre.projetointegradow4g1.repositories.AnuncioRepository;
+
+import javax.validation.Valid;
 
 @Service
 public class AnuncioService {
