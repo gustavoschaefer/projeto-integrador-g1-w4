@@ -7,6 +7,7 @@ import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -27,6 +28,8 @@ public class AnuncioDTO {
     private String descricao;
     private Lote lote;
     private Vendedor vendedor;
+    @NotNull
+    private BigDecimal preco;
 
     public static Anuncio converte(AnuncioDTO dto){
         Anuncio anuncio = Anuncio.builder()
@@ -34,6 +37,7 @@ public class AnuncioDTO {
                 .descricao(dto.getDescricao())
                 .lote(dto.getLote())
                 .vendedor(dto.getVendedor())
+                .preco(dto.getPreco())
                 .build();
         return anuncio;
     }
@@ -44,6 +48,7 @@ public class AnuncioDTO {
                 .descricao(anuncio.getDescricao())
                 .lote(anuncio.getLote())
                 .vendedor(anuncio.getVendedor())
+                .preco(anuncio.getPreco())
                 .build();
     }
 
