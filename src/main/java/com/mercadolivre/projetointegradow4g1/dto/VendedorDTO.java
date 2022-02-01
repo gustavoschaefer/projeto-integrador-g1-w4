@@ -1,14 +1,19 @@
 package com.mercadolivre.projetointegradow4g1.dto;
 
 
-import com.mercadolivre.projetointegradow4g1.entities.Armazem;
-import com.mercadolivre.projetointegradow4g1.entities.Vendedor;
-import lombok.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import com.mercadolivre.projetointegradow4g1.entities.Vendedor;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter

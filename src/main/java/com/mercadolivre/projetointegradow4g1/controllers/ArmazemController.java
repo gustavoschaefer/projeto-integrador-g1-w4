@@ -21,8 +21,7 @@ public class ArmazemController {
 
     @PostMapping("/salvar")
     public ResponseEntity<ArmazemDTO> salvar(@Valid @RequestBody ArmazemDTO dto, UriComponentsBuilder uriComponentsBuilder) {
-        Armazem armazem = ArmazemDTO.converte(dto);
-        Armazem arm = armazemService.salvar(armazem);
+        Armazem arm = armazemService.salvar(ArmazemDTO.converte(dto));
         URI uri = uriComponentsBuilder
                 .path("/armazem/{id}")
                 .buildAndExpand(arm.getId())

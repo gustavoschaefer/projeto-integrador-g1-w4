@@ -2,14 +2,11 @@ package com.mercadolivre.projetointegradow4g1.dto;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.mercadolivre.projetointegradow4g1.entities.Anuncio;
 import com.mercadolivre.projetointegradow4g1.entities.Lote;
-
 import com.mercadolivre.projetointegradow4g1.entities.Produto;
-import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

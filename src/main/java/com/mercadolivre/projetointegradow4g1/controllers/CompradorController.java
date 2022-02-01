@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/compradores")
+@RequestMapping("/comprador")
 public class CompradorController {
 
     @Autowired
@@ -21,7 +21,7 @@ public class CompradorController {
     public ResponseEntity<Comprador> salvar(@RequestBody Comprador comprador, UriComponentsBuilder uriBuilder){
         compradorService.salvar(comprador);
         URI uri = uriBuilder
-                .path("/compradores/{id}")
+                .path("/comprador/{id}")
                 .buildAndExpand(comprador.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(comprador);

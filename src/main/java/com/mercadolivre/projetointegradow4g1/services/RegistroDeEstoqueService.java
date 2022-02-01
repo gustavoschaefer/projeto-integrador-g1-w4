@@ -1,23 +1,24 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
-import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
+import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
 
 @Service
 public class RegistroDeEstoqueService {
 
     private RegistroDeEstoqueRepository registroDeEstoqueRepository;
-
-    public RegistroDeEstoqueService(RegistroDeEstoqueRepository registroDeEstoqueRepository) {
-        this.registroDeEstoqueRepository = registroDeEstoqueRepository;
-    }
+    
+    public RegistroDeEstoqueService(RegistroDeEstoqueRepository registroDeEstoqueRepository) {	
+		this.registroDeEstoqueRepository = registroDeEstoqueRepository;		
+	}
 
     public RegistroDeEstoque postRegistroDeEstoque(RegistroDeEstoque registroDeEstoque) {
-        return registroDeEstoqueRepository.save(registroDeEstoque);
+    	return registroDeEstoqueRepository.save(registroDeEstoque);
     }
 
     public List<RegistroDeEstoque> listar(){

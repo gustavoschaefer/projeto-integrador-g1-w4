@@ -23,8 +23,9 @@ public class RegistroDeEstoqueController {
     public ResponseEntity<RegistroDeEstoqueDTO> postEstoque(@RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
         RegistroDeEstoque regEstRet = registroDeEstoqueService.postRegistroDeEstoque(RegistroDeEstoqueDTO.converte(registroDeEstoque));
         URI uri = uriBuilder
-                .path("/anuncio/listar")
-                .build().toUri();
+        		.path("/registroestoque/{id}")
+                .buildAndExpand(regEstRet.getId())
+                .toUri();
         return ResponseEntity.created(uri).body(RegistroDeEstoqueDTO.converte(regEstRet));
     }
 
@@ -32,17 +33,18 @@ public class RegistroDeEstoqueController {
     public ResponseEntity<RegistroDeEstoqueDTO> putEstoque(@PathVariable Long id, @RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
         RegistroDeEstoque regEstRet = registroDeEstoqueService.putRegistroDeEstoque(id, RegistroDeEstoqueDTO.converte(registroDeEstoque));
         URI uri = uriBuilder
-                .path("/anuncio/listar")
-                .build().toUri();
+                .path("/registroestoque/{id}")
+                .buildAndExpand(regEstRet.getId())
+                .toUri();                
         return ResponseEntity.created(uri).body(RegistroDeEstoqueDTO.converte(regEstRet));
     }
 
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<RegistroDeEstoqueDTO> getRegistroEstoque(@PathVariable Long id){
         return ResponseEntity.ok(RegistroDeEstoqueDTO.converte(registroDeEstoqueService.buscarRegistroDeEstoque(id)));
     }
 
-    @GetMapping("/listar")
+    @GetMapping()
     public ResponseEntity<List<RegistroDeEstoqueDTO>> listar(){
         return ResponseEntity.ok(RegistroDeEstoqueDTO.converte(registroDeEstoqueService.listar()));
     }

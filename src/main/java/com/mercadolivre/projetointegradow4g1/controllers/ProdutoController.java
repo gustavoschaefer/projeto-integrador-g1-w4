@@ -23,7 +23,7 @@ import com.mercadolivre.projetointegradow4g1.entities.Produto;
 import com.mercadolivre.projetointegradow4g1.services.ProdutoService;
 
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/produto")
 public class ProdutoController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class ProdutoController {
     public ResponseEntity<ProdutoDTO> cadastraProduto(@Valid @RequestBody Produto produto, UriComponentsBuilder uriBuilder) {
         produtoService.salvarProduto(produto);
         URI uri = uriBuilder
-                .path("/produtos/{id}")
+                .path("/produto/{id}")
                 .buildAndExpand(produto.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(ProdutoDTO.converte(produto));

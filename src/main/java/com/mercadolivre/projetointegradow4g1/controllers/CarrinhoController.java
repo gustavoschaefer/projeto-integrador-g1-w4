@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/carrinhos")
+@RequestMapping("/carrinho")
 public class CarrinhoController {
 
     @Autowired

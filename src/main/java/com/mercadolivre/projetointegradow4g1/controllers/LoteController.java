@@ -18,7 +18,7 @@ import com.mercadolivre.projetointegradow4g1.entities.Lote;
 import com.mercadolivre.projetointegradow4g1.services.LoteService;
 
 @RestController
-@RequestMapping("/lotes")
+@RequestMapping("/lote")
 public class LoteController {
 	
 	@Autowired
@@ -40,7 +40,7 @@ public class LoteController {
 		Lote lote = LoteDTO.converte(dto);
 		service.salvar(lote);
 		URI uri = uriBuilder
-				.path("/lotes/{id}")
+				.path("/lote/{id}")
 				.buildAndExpand(lote.getId())
 				.toUri();
 		return ResponseEntity.created(uri).body(LoteDTO.converte(lote));
