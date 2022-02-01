@@ -3,6 +3,7 @@ package com.mercadolivre.projetointegradow4g1.controllers;
 import com.mercadolivre.projetointegradow4g1.dto.AnuncioDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Anuncio;
 import com.mercadolivre.projetointegradow4g1.services.AnuncioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequestMapping("/anuncio")
 public class AnuncioController {
 
-
+    @Autowired
     AnuncioService anuncioService;
 
     @PostMapping("/salvar")

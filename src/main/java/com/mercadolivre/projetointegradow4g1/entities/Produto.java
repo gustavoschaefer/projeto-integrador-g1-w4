@@ -30,6 +30,7 @@ public class Produto {
 	private Long volume_uni;
 	private CondicaoConservacao conservacao;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "produto")
 	private Set<Lote> lotes;
 
