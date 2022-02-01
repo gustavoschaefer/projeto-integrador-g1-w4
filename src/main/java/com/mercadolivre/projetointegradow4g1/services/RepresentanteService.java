@@ -5,24 +5,22 @@ import com.mercadolivre.projetointegradow4g1.repositories.RepresentanteRepositor
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RepresentanteService {
 
-    private RepresentanteRepository representanteRepository;
+    private static RepresentanteRepository representanteRepository;
 
     public RepresentanteService(RepresentanteRepository representanteRepository) {
-        this.representanteRepository = representanteRepository;
+        RepresentanteService.representanteRepository = representanteRepository;
     }
 
     public Representante salvar(Representante representante) {
-        if (ArmazemService.valida(representante)) {
+        if (ArmazemService.existe(representante.getArmazem())) {
             return representanteRepository.save(representante);
         } else {
             throw new RuntimeException("Armazem invalido");
         }
-
     }
 
     public List<Representante> listar() {
@@ -30,7 +28,14 @@ public class RepresentanteService {
     }
 
     public Representante buscar(Long id) {
-        Optional<Representante> optional = representanteRepository.findById(id);
-        return optional.orElse(new Representante());
+        return representanteRepository.findById(id).orElse(new Representante());
+    }
+
+    public static boolean existe(Representante representante) {
+        return representanteRepository.findById(representante.getId()).isPresent();
+    }
+
+    public static boolean armazemExiste(Representante representante) {
+        return representanteRepository.findById(representante.getId()).get().getArmazem().equals(representante.getArmazem());
     }
 }
