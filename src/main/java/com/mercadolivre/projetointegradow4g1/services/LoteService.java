@@ -11,22 +11,26 @@ import com.mercadolivre.projetointegradow4g1.repositories.LoteRepository;
 @Service
 public class LoteService {
 
-	private LoteRepository repository;
+	private static LoteRepository repository;
 
 	public LoteService(LoteRepository repository) {
-		this.repository = repository;
+		LoteService.repository = repository;
 	}
 
 	public void salvar(Lote lote) {
-		this.repository.save(lote);
+		LoteService.repository.save(lote);
 	}
 
 	public List<Lote> listar() {
-		return this.repository.findAll();
+		return LoteService.repository.findAll();
 	}
 
 	public Lote obter(Long id) {
-		Optional<Lote> op = this.repository.findById(id);
+		Optional<Lote> op = LoteService.repository.findById(id);
 		return op.orElse(new Lote());
+	}
+	
+	public static boolean existe(Lote lote) {
+		return repository.findById(lote.getId()).isPresent();
 	}
 }

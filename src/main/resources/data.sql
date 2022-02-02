@@ -1,5 +1,5 @@
 insert into tb_armazem (id, descricao, nome) values (null, 'Armazem grande', 'Armazem 1');
-insert into tb_setor (id, armazem_id, nome, tipo) values (null, 1, 'Setor A', 0);
+insert into tb_setor (id, armazem_id, nome, tipo, capacidade_total, capacidade_atual) values (null, 1, 'Setor A', 0, 1000.00, 0.0);
 insert into tb_representante (id, armazem_id, nome) values (null, 1, 'José Filho');
 insert into tb_produto (id, conservacao, nome, volume_uni) values (null, 0, 'Carne', 70.0);
 insert into tb_lote (id, data_fabricacao, data_validade, produto_id, quantidade_atual, quantidade_inicial, temperatura_atual, temperatura_minima) values (null, '2018-05-07T15:20:45.765Z', '2022-05-07T15:20:45.765Z', 1, 20, 10, 5.0, 7.0);
