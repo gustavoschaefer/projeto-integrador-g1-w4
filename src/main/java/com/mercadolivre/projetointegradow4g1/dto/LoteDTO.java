@@ -26,7 +26,9 @@ public class LoteDTO {
 	private Integer quantidadeAtual;
 	@NotNull
 	private Instant dataFabricacao;
-	@NotNull
+  @NotNull
+	private Instant dataFabricacao;
+  @NotNull
 	private Instant dataValidade;
 	@NotNull
 	private Double temperaturaAtual;
@@ -39,7 +41,7 @@ public class LoteDTO {
 		Lote lote = Lote.builder()
 				.quantidadeInicial(dto.getQuantidadeInicial())
 				.quantidadeAtual(dto.getQuantidadeAtual())
-				.dataFabricacao(dto.getDataFabricacao())								
+				.dataFabricacao(dto.getDataFabricacao())
 				.dataValidade(dto.getDataValidade())
 				.temperaturaAtual(dto.getTemperaturaAtual())
 				.temperaturaMinima(dto.getTemperaturaMinima())
@@ -52,7 +54,7 @@ public class LoteDTO {
 		return LoteDTO.builder()
 				.quantidadeInicial(lote.getQuantidadeInicial())
 				.quantidadeAtual(lote.getQuantidadeAtual())
-				.dataFabricacao(lote.getDataFabricacao())				
+				.dataFabricacao(lote.getDataFabricacao())
 				.dataValidade(lote.getDataValidade())
 				.temperaturaAtual(lote.getTemperaturaAtual())
 				.temperaturaMinima(lote.getTemperaturaMinima())
@@ -61,6 +63,6 @@ public class LoteDTO {
 	}
 	
 	public static List<LoteDTO> converte(List<Lote> lotes){
-		return lotes.stream().map(l -> converte(l)).collect(Collectors.toList());		
+		return lotes.stream().map(l -> converte(l)).collect(Collectors.toList());
 	}
 }

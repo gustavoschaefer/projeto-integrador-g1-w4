@@ -29,7 +29,7 @@ public class ArmazemController {
         return ResponseEntity.created(uri).body(ArmazemDTO.converte(arm));
     }
 
-    @GetMapping("/listar")
+    @GetMapping()
     public ResponseEntity<List<ArmazemDTO>> listar() {
         return ResponseEntity.ok(ArmazemDTO.converte(armazemService.listar()));
     }

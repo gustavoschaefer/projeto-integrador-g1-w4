@@ -17,7 +17,7 @@ public class RegistroDeEstoqueService {
 		this.registroDeEstoqueRepository = registroDeEstoqueRepository;		
 	}
 
-    public RegistroDeEstoque postRegistroDeEstoque(RegistroDeEstoque registroDeEstoque) {
+    public RegistroDeEstoque salvarRegistroDeEstoque(RegistroDeEstoque registroDeEstoque) {
     	return registroDeEstoqueRepository.save(registroDeEstoque);
     }
 
@@ -30,7 +30,7 @@ public class RegistroDeEstoqueService {
         return registroDeEstoque.orElse(new RegistroDeEstoque());
     }
 
-    public RegistroDeEstoque putRegistroDeEstoque(Long id, RegistroDeEstoque registroDeEstoque) {
+    public RegistroDeEstoque atualizarRegistroDeEstoque(Long id, RegistroDeEstoque registroDeEstoque) {
         RegistroDeEstoque registroDeEstoqueRet = registroDeEstoqueRepository.getById(id);
         registroDeEstoqueRet.setData(registroDeEstoque.getData());
         registroDeEstoqueRet.setSetor(registroDeEstoque.getSetor());

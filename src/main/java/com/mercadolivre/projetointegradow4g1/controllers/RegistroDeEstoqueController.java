@@ -20,8 +20,8 @@ public class RegistroDeEstoqueController {
     RegistroDeEstoqueService registroDeEstoqueService;
 
     @PostMapping("/salvar")
-    public ResponseEntity<RegistroDeEstoqueDTO> postEstoque(@RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
-        RegistroDeEstoque regEstRet = registroDeEstoqueService.postRegistroDeEstoque(RegistroDeEstoqueDTO.converte(registroDeEstoque));
+    public ResponseEntity<RegistroDeEstoqueDTO> salvarRegistroDeEstoque(@RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
+        RegistroDeEstoque regEstRet = registroDeEstoqueService.salvarRegistroDeEstoque(RegistroDeEstoqueDTO.converte(registroDeEstoque));
         URI uri = uriBuilder
         		.path("/registroestoque/{id}")
                 .buildAndExpand(regEstRet.getId())
@@ -29,9 +29,9 @@ public class RegistroDeEstoqueController {
         return ResponseEntity.created(uri).body(RegistroDeEstoqueDTO.converte(regEstRet));
     }
 
-    @PutMapping("/alterar/{id}")
-    public ResponseEntity<RegistroDeEstoqueDTO> putEstoque(@PathVariable Long id, @RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
-        RegistroDeEstoque regEstRet = registroDeEstoqueService.putRegistroDeEstoque(id, RegistroDeEstoqueDTO.converte(registroDeEstoque));
+    @PutMapping("/{id}")
+    public ResponseEntity<RegistroDeEstoqueDTO> atualizarRegistroDeEstoque(@PathVariable Long id, @RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
+        RegistroDeEstoque regEstRet = registroDeEstoqueService.atualizarRegistroDeEstoque(id, RegistroDeEstoqueDTO.converte(registroDeEstoque));
         URI uri = uriBuilder
                 .path("/registroestoque/{id}")
                 .buildAndExpand(regEstRet.getId())
@@ -40,7 +40,7 @@ public class RegistroDeEstoqueController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RegistroDeEstoqueDTO> getRegistroEstoque(@PathVariable Long id){
+    public ResponseEntity<RegistroDeEstoqueDTO> buscarRegistroDeEstoque(@PathVariable Long id){
         return ResponseEntity.ok(RegistroDeEstoqueDTO.converte(registroDeEstoqueService.buscarRegistroDeEstoque(id)));
     }
 

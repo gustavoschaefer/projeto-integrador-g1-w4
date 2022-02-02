@@ -18,7 +18,7 @@ public class AnuncioService {
         this.anuncioRepository = anuncioRepository;
     }
 
-    public Anuncio postAnuncio(Anuncio anuncio){
+    public Anuncio salvarAnuncio(Anuncio anuncio){
         return anuncioRepository.save(anuncio);
     }
 
