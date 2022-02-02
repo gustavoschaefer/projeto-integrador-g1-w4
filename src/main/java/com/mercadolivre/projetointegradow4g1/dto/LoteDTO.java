@@ -26,9 +26,7 @@ public class LoteDTO {
 	private Integer quantidadeAtual;
 	@NotNull
 	private Instant dataFabricacao;
-  @NotNull
-	private Instant dataFabricacao;
-  @NotNull
+  	@NotNull
 	private Instant dataValidade;
 	@NotNull
 	private Double temperaturaAtual;
