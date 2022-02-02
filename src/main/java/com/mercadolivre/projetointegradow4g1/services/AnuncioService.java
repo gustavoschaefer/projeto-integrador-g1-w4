@@ -12,7 +12,7 @@ import com.mercadolivre.projetointegradow4g1.repositories.AnuncioRepository;
 public class AnuncioService {
 
 
-    private final AnuncioRepository anuncioRepository;
+    private static AnuncioRepository anuncioRepository;
 
     public AnuncioService(AnuncioRepository anuncioRepository) {
         this.anuncioRepository = anuncioRepository;
@@ -26,7 +26,7 @@ public class AnuncioService {
         return anuncioRepository.findAll();
     }
 
-    public Anuncio buscarAnuncio(Long id){
+    public static Anuncio buscarAnuncio(Long id){
         Optional<Anuncio> anuncio = anuncioRepository.findById(id);
         return anuncio.orElse(new Anuncio());
     }

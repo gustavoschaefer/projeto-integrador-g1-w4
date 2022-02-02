@@ -4,6 +4,7 @@ package com.mercadolivre.projetointegradow4g1.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,6 +20,8 @@ public class Carrinho {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private BigDecimal precoTotal;
 
     @OneToMany(mappedBy = "carrinho")
     private Set<CarrinhoAnuncio> carrinhoAnuncios;

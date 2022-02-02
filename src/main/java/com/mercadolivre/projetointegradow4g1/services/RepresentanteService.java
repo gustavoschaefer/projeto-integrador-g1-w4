@@ -1,6 +1,5 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.entities.Representante;
 import com.mercadolivre.projetointegradow4g1.repositories.RepresentanteRepository;
 import org.springframework.http.HttpStatus;

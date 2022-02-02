@@ -1,6 +1,7 @@
 package com.mercadolivre.projetointegradow4g1.controllers;
 
-
+import com.mercadolivre.projetointegradow4g1.dto.CarrinhoDTO;
+import com.mercadolivre.projetointegradow4g1.dto.CarrinhoSalvarDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Carrinho;
 import com.mercadolivre.projetointegradow4g1.services.CarrinhoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,13 @@ public class CarrinhoController {
     CarrinhoService carrinhoService;
 
     @PostMapping("/salvar")
-    public ResponseEntity<Carrinho> salvar(@RequestBody Carrinho carrinho, UriComponentsBuilder uriBuilder){
-        carrinhoService.salvar(carrinho);
+    public ResponseEntity<CarrinhoSalvarDTO> salvar(@RequestBody CarrinhoDTO dto, UriComponentsBuilder uriBuilder){
+        Carrinho carrinho = carrinhoService.salvar(CarrinhoDTO.converte(dto));
         URI uri = uriBuilder
                 .path("/carrinhos/{id}")
                 .buildAndExpand(carrinho.getId())
                 .toUri();
-        return ResponseEntity.created(uri).body(carrinho);
+        return ResponseEntity.created(uri).body(CarrinhoDTO.converteSalvar(carrinho));
     }
 
     @GetMapping

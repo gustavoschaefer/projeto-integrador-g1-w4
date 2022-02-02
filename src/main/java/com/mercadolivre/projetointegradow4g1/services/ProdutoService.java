@@ -5,10 +5,12 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.mercadolivre.projetointegradow4g1.entities.Produto;
 import com.mercadolivre.projetointegradow4g1.repositories.ProdutoRepository;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @Service
@@ -46,6 +48,9 @@ public class ProdutoService {
                             .filter(p -> p.getConservacao().toString().equals("CONGELADO")).collect(Collectors.toList());
                 }
             }
+        }
+        if (produtos.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nenhum produto registrado.");
         }
         return produtos;
     }
