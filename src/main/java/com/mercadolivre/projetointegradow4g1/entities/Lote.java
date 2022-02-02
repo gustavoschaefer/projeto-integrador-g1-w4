@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.time.Instant;
 import java.util.Objects;
 import java.util.Set;
@@ -23,14 +25,23 @@ public class Lote {
     private Long id;
     
     @Column(nullable = false)
+    @NotNull    
     private Integer quantidadeInicial;
     
     @Column(nullable = false)
+    @NotNull
     private Integer quantidadeAtual;
     
+    @NotNull
     private Instant dataFabricacao;
+    
+    @NotNull
     private Instant dataValidade;
+    
+    @NotNull
     private Double temperaturaAtual;
+    
+    @NotNull
     private Double temperaturaMinima;
 
     @ManyToOne

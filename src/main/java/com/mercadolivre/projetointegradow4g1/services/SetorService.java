@@ -6,27 +6,49 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.mercadolivre.projetointegradow4g1.entities.Setor;
+import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
 import com.mercadolivre.projetointegradow4g1.repositories.SetorRepository;
 
 @Service
 public class SetorService {
 
-	private SetorRepository repository;
+	private static SetorRepository repository;
 
 	public SetorService(SetorRepository repository) {
-		this.repository = repository;
+		SetorService.repository = repository;
 	}
 
 	public void salvar(Setor setor) {
-		this.repository.save(setor);
+		setor.setCapacidadeAtual(0.0);
+		repository.save(setor);
 	}
 
 	public List<Setor> listar() {
-		return this.repository.findAll();
+		return repository.findAll();
 	}
 
 	public Setor obter(Long id) {
-		Optional<Setor> op = this.repository.findById(id);
+		Optional<Setor> op = repository.findById(id);
 		return op.orElse(new Setor());
+	}
+	
+	public static boolean existe(Setor setor) {
+		return repository.findById(setor.getId()).isPresent();
+	}
+	
+	public static boolean temCapacidade(Setor setor, double volume) {
+		Optional<Setor> setorOpt = repository.findById(setor.getId());
+		if(setorOpt.isPresent()) {
+			return setorOpt.get().getCapacidadeTotal() - setorOpt.get().getCapacidadeAtual() >= volume;						
+		}
+		return false;
+	}
+	
+	public static boolean confereTipo(Setor setor, CondicaoConservacao condicao) {
+		Optional<Setor> setorOpt = repository.findById(setor.getId());
+		if(setorOpt.isPresent()) {
+			setorOpt.get().getTipo().equals(condicao);
+		}
+		return false;
 	}
 }

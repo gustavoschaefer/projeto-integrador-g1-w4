@@ -23,7 +23,7 @@ public class ArmazemService {
     }
 
     public ArmazemService(ArmazemRepository armazemRepository) {
-        this.armazemRepository = armazemRepository;
+        ArmazemService.armazemRepository = armazemRepository;
     }
 
     public Armazem salvar(Armazem armazem) {
