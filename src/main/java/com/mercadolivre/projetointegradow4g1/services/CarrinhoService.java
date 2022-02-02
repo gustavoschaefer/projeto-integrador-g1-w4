@@ -13,8 +13,8 @@ import java.util.Set;
 @Service
 public class CarrinhoService {
 
-    private CarrinhoRepository carrinhoRepository;
-    private CarrinhoAnuncioRepository carrinhoAnuncioRepository;
+    private final CarrinhoRepository carrinhoRepository;
+    private final CarrinhoAnuncioRepository carrinhoAnuncioRepository;
 
     public CarrinhoService(CarrinhoRepository carrinhoRepository, CarrinhoAnuncioRepository carrinhoAnuncioRepository) {
         this.carrinhoRepository = carrinhoRepository;

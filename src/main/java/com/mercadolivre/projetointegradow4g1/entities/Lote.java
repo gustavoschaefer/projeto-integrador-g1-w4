@@ -51,6 +51,10 @@ public class Lote {
     @JsonIgnore
     private Set<RegistroDeEstoque> registroDeEstoques;
 
+    public double getVolumeTotal() {
+        return quantidadeAtual * produto.getVolumeUni();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

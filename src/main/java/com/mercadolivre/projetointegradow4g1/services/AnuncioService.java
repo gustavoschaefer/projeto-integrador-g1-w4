@@ -12,7 +12,7 @@ import com.mercadolivre.projetointegradow4g1.repositories.AnuncioRepository;
 public class AnuncioService {
 
 
-    private AnuncioRepository anuncioRepository;
+    private final AnuncioRepository anuncioRepository;
 
     public AnuncioService(AnuncioRepository anuncioRepository) {
         this.anuncioRepository = anuncioRepository;

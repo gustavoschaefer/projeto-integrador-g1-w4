@@ -13,8 +13,8 @@ import com.mercadolivre.projetointegradow4g1.repositories.CompraRepository;
 @Service
 public class CompraService {
 	
-	private CompraRepository compraRepository;
-	private CarrinhoRepository carrinhoRepo;
+	private final CompraRepository compraRepository;
+	private final CarrinhoRepository carrinhoRepo;
 	
 	public CompraService(CompraRepository compraRepository, CarrinhoRepository carrinhoRepo) {
 		this.compraRepository = compraRepository;

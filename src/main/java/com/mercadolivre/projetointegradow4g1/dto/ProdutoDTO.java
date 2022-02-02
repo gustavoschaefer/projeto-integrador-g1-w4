@@ -27,13 +27,13 @@ public class ProdutoDTO {
     @NotEmpty(message = "O nome do Produto é obrigatório.")
     private String nome;
     @NotNull
-    private Long volume_uni;
+    private Double volumeUni;
     private CondicaoConservacao conservacao;
 
     public static Produto converte(ProdutoDTO dto){
         Produto produto = Produto.builder()
                 .nome(dto.getNome())
-                .volume_uni(dto.getVolume_uni())
+                .volumeUni(dto.getVolumeUni())
                 .conservacao(dto.getConservacao())
                 .build();
         return produto;
@@ -42,7 +42,7 @@ public class ProdutoDTO {
     public static ProdutoDTO converte(Produto produto){
         ProdutoDTO dto = ProdutoDTO.builder()
                 .nome(produto.getNome())
-                .volume_uni(produto.getVolume_uni())
+                .volumeUni(produto.getVolumeUni())
                 .conservacao(produto.getConservacao())
                 .build();
         return dto;
@@ -56,7 +56,7 @@ public class ProdutoDTO {
     public String toString() {
         return "ProdutoDTO{" +
                 "nome='" + nome + '\'' +
-                ", volume_uni=" + volume_uni +
+                ", volumeUni=" + volumeUni +
                 ", conservacao=" + conservacao +
                 '}';
     }
@@ -66,11 +66,11 @@ public class ProdutoDTO {
         if (this == o) return true;
         if (!(o instanceof ProdutoDTO)) return false;
         ProdutoDTO that = (ProdutoDTO) o;
-        return nome.equals(that.nome) && volume_uni.equals(that.volume_uni) && conservacao == that.conservacao;
+        return nome.equals(that.nome) && volumeUni.equals(that.volumeUni) && conservacao == that.conservacao;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, volume_uni, conservacao);
+        return Objects.hash(nome, volumeUni, conservacao);
     }
 }

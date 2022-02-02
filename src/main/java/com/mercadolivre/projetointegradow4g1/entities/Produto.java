@@ -27,7 +27,7 @@ public class Produto {
 	@NotEmpty(message = "O nome do Produto é obrigatório.")
 	private String nome;
 	@NotNull
-	private Long volume_uni;
+	private Double volumeUni;
 	private CondicaoConservacao conservacao;
 
 	@JsonIgnore

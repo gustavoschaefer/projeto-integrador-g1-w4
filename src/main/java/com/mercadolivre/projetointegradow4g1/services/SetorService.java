@@ -47,8 +47,15 @@ public class SetorService {
 	public static boolean confereTipo(Setor setor, CondicaoConservacao condicao) {
 		Optional<Setor> setorOpt = repository.findById(setor.getId());
 		if(setorOpt.isPresent()) {
-			setorOpt.get().getTipo().equals(condicao);
+			return setorOpt.get().getTipo().equals(condicao);
 		}
 		return false;
+	}
+
+	public static void atualizaCapacidade(Setor setor, double volume){
+		Optional<Setor> setorOpt = repository.findById(setor.getId());
+		if(setorOpt.isPresent()){
+			setorOpt.get().setCapacidadeAtual(setorOpt.get().getCapacidadeAtual() + volume);
+		}
 	}
 }
