@@ -21,21 +21,21 @@ public class AnuncioController {
     AnuncioService anuncioService;
 
     @PostMapping("/salvar")
-    public ResponseEntity<AnuncioDTO> postAnuncio(@Valid @RequestBody AnuncioDTO anuncio, UriComponentsBuilder uriBuilder){
-        Anuncio anuncios = anuncioService.postAnuncio(AnuncioDTO.converte(anuncio));
+    public ResponseEntity<AnuncioDTO> salvarAnuncio(@Valid @RequestBody AnuncioDTO anuncio, UriComponentsBuilder uriBuilder){
+        Anuncio anuncios = anuncioService.salvarAnuncio(AnuncioDTO.converte(anuncio));
         URI uri = uriBuilder
                 .path("/anuncio/{id}")
                 .build().toUri();
         return ResponseEntity.created(uri).body(AnuncioDTO.converte(anuncios));
     }
 
-    @GetMapping("/listar")
+    @GetMapping("")
     public ResponseEntity<List<AnuncioDTO>> listar() {
         return ResponseEntity.ok(AnuncioDTO.converte(anuncioService.listar()));
     }
 
-    @GetMapping("/buscar/{id}")
-    public ResponseEntity<AnuncioDTO> getAnuncio(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public ResponseEntity<AnuncioDTO> buscarAnuncio(@PathVariable Long id){
         return ResponseEntity.ok(AnuncioDTO.converte(anuncioService.buscarAnuncio(id)));
     }
 }
