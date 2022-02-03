@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -17,32 +18,47 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class CarrinhoDTO {
     private Comprador comprador;
-    private Set<CarrinhoAnuncio> carrinhoAnuncios;
+    private List<CarrinhoAnuncio> carrinhoAnuncios;
     private BigDecimal precoTotal;
 
     public static Carrinho converte(CarrinhoDTO dto) {
-        Carrinho carrinho = Carrinho.builder()
+        return Carrinho.builder()
                 .comprador(dto.getComprador())
                 .carrinhoAnuncios(dto.getCarrinhoAnuncios())
                 .precoTotal(dto.getPrecoTotal())
                 .build();
-        return carrinho;
     }
 
     public static CarrinhoDTO converte(Carrinho carrinho) {
-        CarrinhoDTO dto = CarrinhoDTO.builder()
+        return CarrinhoDTO.builder()
                 .comprador(carrinho.getComprador())
                 .carrinhoAnuncios(carrinho.getCarrinhoAnuncios())
                 .precoTotal(carrinho.getPrecoTotal())
                 .build();
-        return dto;
     }
 
     public static CarrinhoSalvarDTO converteSalvar(Carrinho carrinho) {
-        CarrinhoSalvarDTO dto = CarrinhoSalvarDTO.builder()
+        return CarrinhoSalvarDTO.builder()
                 .precoTotal(carrinho.getPrecoTotal())
                 .build();
-        return dto;
+    }
+
+    public static CarrinhoBuscarDTO converteBuscar(Carrinho carrinho) {
+        List<ProdutoCarrinhoDTO> produtoCarrinhoDTOS = new ArrayList<>();
+        for (CarrinhoAnuncio carrinhoAnuncio :  carrinho.getCarrinhoAnuncios()) {
+            ProdutoCarrinhoDTO produtoCarrinhoDTO = new ProdutoCarrinhoDTO();
+            produtoCarrinhoDTO.setNome(carrinhoAnuncio.getAnuncio().getLote().getProduto().getNome());
+            produtoCarrinhoDTO.setConservacao(carrinhoAnuncio.getAnuncio().getLote().getProduto().getConservacao());
+            produtoCarrinhoDTO.setPreco(carrinhoAnuncio.getAnuncio().getPreco());
+            produtoCarrinhoDTO.setQuantidade(carrinhoAnuncio.getQuantidade());
+            produtoCarrinhoDTO.setVolumeUni(carrinhoAnuncio.getAnuncio().getLote().getProduto().getVolumeUni());
+            produtoCarrinhoDTOS.add(produtoCarrinhoDTO);
+        }
+
+        return CarrinhoBuscarDTO.builder()
+                .produtoCarrinhoDTOS(produtoCarrinhoDTOS)
+                .precoTotal(carrinho.getPrecoTotal())
+                .build();
     }
 
     public static List<CarrinhoDTO> converte(List<Carrinho> carrinhos) {

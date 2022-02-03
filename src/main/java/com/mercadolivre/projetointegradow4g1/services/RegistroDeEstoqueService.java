@@ -71,28 +71,10 @@ public class RegistroDeEstoqueService {
 
     public static boolean temEstoque(Lote lote, Integer quantidade) {
         return registroDeEstoqueRepository.buscaLote(lote.getId()).getQuantidadeAtual() >= quantidade;
-//        List<RegistroDeEstoque> registroDeEstoques = listar();
-//        for (RegistroDeEstoque registroDeEstoque : registroDeEstoques) {
-//            for (Lote loteReg : registroDeEstoque.getLotes()) {
-//                if (loteReg.getId().equals(lote.getId())) {
-//                    return loteReg.getQuantidadeAtual() >= quantidade;
-//                }
-//            }
-//        }
-//        return false;
     }
 
     public static boolean estaValido(Lote lote, Integer dias) {
-//        List<RegistroDeEstoque> registroDeEstoques = listar();
         Instant data = Instant.now().plus(dias, ChronoUnit.DAYS);
         return registroDeEstoqueRepository.buscaLote(lote.getId()).getDataValidade().isAfter(data);
-//        for (RegistroDeEstoque registroDeEstoque : registroDeEstoques) {
-//            for (Lote loteReg : registroDeEstoque.getLotes()) {
-//                if (loteReg.getId().equals(lote.getId())) {
-//                    return loteReg.getDataValidade().isAfter(data);
-//                }
-//            }
-//        }
-//        return false;
     }
 }

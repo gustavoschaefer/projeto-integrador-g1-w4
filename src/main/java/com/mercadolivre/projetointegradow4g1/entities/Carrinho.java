@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,7 +25,7 @@ public class Carrinho {
     private BigDecimal precoTotal;
 
     @OneToMany(mappedBy = "carrinho")
-    private Set<CarrinhoAnuncio> carrinhoAnuncios;
+    private List<CarrinhoAnuncio> carrinhoAnuncios;
 
     @OneToOne
     private Comprador comprador;
