@@ -65,10 +65,11 @@ public class CarrinhoService {
                     int quantidade = carrinhoAnuncioRet.getQuantidade() - carrinhoAnuncio.getQuantidade();
                     LoteService.atualizaQuantidade(carrinhoAnuncio.getAnuncio().getLote(), quantidade);
                     atualizaVolumeSetor(carrinhoAnuncio, -quantidade);
-                    precoTotal = precoTotal.add(AnuncioService.buscarAnuncio(carrinhoAnuncio.getAnuncio().getId()).getPreco().multiply(new BigDecimal(carrinhoAnuncio.getQuantidade())));
+
                     CarrinhoAnuncio carrinhoAnuncioAtualiza = carrinhoAnuncioRepository.getById(carrinhoAnuncio.getId());
                     carrinhoAnuncioAtualiza.setQuantidade(carrinhoAnuncio.getQuantidade());
                 }
+                precoTotal = precoTotal.add(AnuncioService.buscarAnuncio(carrinhoAnuncio.getAnuncio().getId()).getPreco().multiply(new BigDecimal(carrinhoAnuncio.getQuantidade())));
             } else { //Remove anuncio excluído
                 int quantidade = carrinhoAnuncioRet.getQuantidade();
                 LoteService.atualizaQuantidade(carrinhoAnuncioRet.getAnuncio().getLote(), quantidade);
@@ -86,6 +87,8 @@ public class CarrinhoService {
                 carrinhoAnuncioRepository.save(carrinhoAnuncio);
             }
         }
+
+
 
         carrinhoRet.setCarrinhoAnuncios(carrinho.getCarrinhoAnuncios());
         carrinhoRet.setComprador(carrinho.getComprador());

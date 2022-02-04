@@ -7,9 +7,13 @@ insert into tb_estoque (id, data, representante_id, setor_id) values (null,'2021
 insert into tb_estoque_lotes (registro_de_estoques_id, lotes_id) values (1, 1);
 
 insert into tb_produto (id, conservacao, nome, volume_uni) values (null, 0, 'Carne', 20.0);
-insert into tb_lote (id, data_fabricacao, data_validade, produto_id, quantidade_atual, quantidade_inicial, temperatura_atual, temperatura_minima) values (null, '2018-05-07T15:20:45.765Z', '2022-05-07T15:20:45.765Z', 2, 20, 20, 5.0, 7.0);
+insert into tb_lote (id, data_fabricacao, data_validade, produto_id, quantidade_atual, quantidade_inicial, temperatura_atual, temperatura_minima) values (null, '2018-05-07T15:20:45.765Z', '2022-03-08T15:20:45.765Z', 1, 40, 40, 5.0, 7.0);
+insert into tb_lote (id, data_fabricacao, data_validade, produto_id, quantidade_atual, quantidade_inicial, temperatura_atual, temperatura_minima) values (null, '2018-05-07T15:20:45.765Z', '2022-04-07T15:20:45.765Z', 1, 30, 30, 5.0, 7.0);
 insert into tb_estoque (id, data, representante_id, setor_id) values (null,'2021-12-07T05:33:00Z' , 1, 1);
 insert into tb_estoque_lotes (registro_de_estoques_id, lotes_id) values (2, 2);
+
+insert into tb_estoque (id, data, representante_id, setor_id) values (null,'2021-12-07T05:33:00Z' , 1, 1);
+insert into tb_estoque_lotes (registro_de_estoques_id, lotes_id) values (3, 3);
 
 insert into tb_vendedor (id, nome) values (null, 'João Primo');
 insert into tb_anuncio (id, descricao, lote_id, preco, titulo, vendedor_id) values (null, 'Carne de primeira', 1, 100.00, 'Alcatra', 1);

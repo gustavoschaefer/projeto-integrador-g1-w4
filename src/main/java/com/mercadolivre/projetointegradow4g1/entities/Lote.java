@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import java.time.Instant;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -54,6 +55,22 @@ public class Lote {
     public double getVolumeTotal() {
         return quantidadeAtual * produto.getVolumeUni();
     }
+
+
+    public static Comparator<Lote> ordemCrescenteQuantidade = new Comparator<Lote>() {
+        @Override
+        public int compare(Lote p1, Lote p2) {
+            return p1.getQuantidadeAtual().compareTo(p2.getQuantidadeAtual());
+        }
+    };
+
+    public static Comparator<Lote> ordemCrescenteValidade = new Comparator<Lote>() {
+        @Override
+        public int compare(Lote p1, Lote p2) {
+            return p1.getDataValidade().compareTo(p2.getDataValidade());
+        }
+    };
+
 
     @Override
     public boolean equals(Object o) {

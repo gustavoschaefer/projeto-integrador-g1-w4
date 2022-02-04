@@ -2,11 +2,13 @@ package com.mercadolivre.projetointegradow4g1.dto;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.mercadolivre.projetointegradow4g1.entities.Lote;
 import com.mercadolivre.projetointegradow4g1.entities.Produto;
 import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
 
@@ -29,12 +31,14 @@ public class ProdutoDTO {
     @NotNull
     private Double volumeUni;
     private CondicaoConservacao conservacao;
+    private List<Lote> lotes;
 
     public static Produto converte(ProdutoDTO dto){
         Produto produto = Produto.builder()
                 .nome(dto.getNome())
                 .volumeUni(dto.getVolumeUni())
                 .conservacao(dto.getConservacao())
+                .lotes(dto.getLotes())
                 .build();
         return produto;
     }
@@ -44,6 +48,7 @@ public class ProdutoDTO {
                 .nome(produto.getNome())
                 .volumeUni(produto.getVolumeUni())
                 .conservacao(produto.getConservacao())
+                .lotes(produto.getLotes())
                 .build();
         return dto;
     }

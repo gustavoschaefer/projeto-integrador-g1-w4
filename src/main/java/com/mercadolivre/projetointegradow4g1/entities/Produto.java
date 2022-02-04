@@ -7,6 +7,8 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -32,7 +34,9 @@ public class Produto {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "produto")
-	private Set<Lote> lotes;
+	private List<Lote> lotes;
+
+
 
 
 	@Override

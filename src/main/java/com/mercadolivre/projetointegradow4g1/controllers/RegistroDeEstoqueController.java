@@ -1,6 +1,8 @@
 package com.mercadolivre.projetointegradow4g1.controllers;
 
+
 import com.mercadolivre.projetointegradow4g1.dto.RegistroDeEstoqueDTO;
+
 import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
 import com.mercadolivre.projetointegradow4g1.services.RegistroDeEstoqueService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/registroestoque")
@@ -48,5 +51,11 @@ public class RegistroDeEstoqueController {
     public ResponseEntity<List<RegistroDeEstoqueDTO>> listar(){
         return ResponseEntity.ok(RegistroDeEstoqueDTO.converte(registroDeEstoqueService.listar()));
     }
+
+
+//    @GetMapping("/produtolote/{id}")
+//    public ResponseEntity<List<ProdutoTmp>> obtemProduto(@PathVariable Long id, @RequestParam Map<String, String> conservacao) {
+//        return ResponseEntity.ok(registroDeEstoqueService.listaProdutosPorLote(id, conservacao));
+//    }
 
 }

@@ -39,7 +39,11 @@ public class LoteService {
 	public static void atualizaQuantidade(Lote lote, Integer quantidade) {
 		Optional<Lote> loteOptional = repository.findById(lote.getId());
 		if (loteOptional.isPresent()) {
-			loteOptional.get().setQuantidadeAtual(loteOptional.get().getQuantidadeAtual() + quantidade);
+			if((loteOptional.get().getQuantidadeAtual() + quantidade) > 0) {
+				loteOptional.get().setQuantidadeAtual(loteOptional.get().getQuantidadeAtual() + quantidade);
+			}else {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Quantidade maior que a disponível");
+			}
 		} else {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Lote invalido");
 		}

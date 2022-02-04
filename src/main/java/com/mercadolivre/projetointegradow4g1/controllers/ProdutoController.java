@@ -45,8 +45,8 @@ public class ProdutoController {
     }
 
     @GetMapping("/obtem/{id}")
-    public ResponseEntity<ProdutoDTO> obtemProduto(@PathVariable Long id) {
-        return ResponseEntity.ok(ProdutoDTO.converte(produtoService.buscarProduto(id)));
+    public ResponseEntity<ProdutoDTO> obtemProduto(@PathVariable Long id, @RequestParam Map<String, String> conservacao) {
+        return ResponseEntity.ok(ProdutoDTO.converte(produtoService.listaProdutosPorLote(id, conservacao)));
     }
 
 }
