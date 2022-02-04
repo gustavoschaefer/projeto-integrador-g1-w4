@@ -1,10 +1,9 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import com.mercadolivre.projetointegradow4g1.entities.Lote;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class ProdutoService {
 
     ProdutoRepository produtoRepository;
+
 
     public ProdutoService(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
@@ -54,11 +54,35 @@ public class ProdutoService {
         }
         return produtos;
     }
+    public Produto listaProdutosPorLote(Long id, Map<String, String> conservacao) {
+        Optional<Produto> optProduto = produtoRepository.findById(id);
+        List<Lote> lotes =  optProduto.get().getLotes();
 
-//    public List<Produto> listaProdutosPorLote(Map<String, String> param){
-//        List<Produto> produtos = produtoRepository.findAll();
-//        Set<Lote> lotes = new HashSet<>();
-//
-//
-//    }
+
+
+        for (Map.Entry<String, String> entry : conservacao.entrySet()) {
+            if (entry.getKey().equals("ordem")) {
+                if (entry.getValue().equals("L")) {
+
+
+                }
+                if (entry.getValue().equals("C")) {
+
+                    Collections.sort(lotes, Lote.ordemCrescenteQuantidade);
+                }
+                if (entry.getValue().equals("F")) {
+
+                    Collections.sort(lotes, Lote.ordemCrescenteValidade);
+                }
+            }
+        }
+        if (optProduto.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nenhum produto registrado.");
+        }
+        Produto produto = optProduto.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado"));
+        produto.setLotes(lotes);
+
+        return produto;
+    }
+
 }

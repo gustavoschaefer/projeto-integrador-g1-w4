@@ -3,15 +3,18 @@ package com.mercadolivre.projetointegradow4g1.services;
 import java.sql.SQLOutput;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+
 import com.mercadolivre.projetointegradow4g1.entities.Lote;
+import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
-import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -68,6 +71,40 @@ public class RegistroDeEstoqueService {
         registroDeEstoqueRet.setLotes(registroDeEstoque.getLotes());
         return registroDeEstoqueRepository.save(registroDeEstoqueRet);
     }
+
+//    public List<ProdutoTmp> listaProdutosPorLote(Long id, Map<String, String> conservacao) {
+//        Optional<Produto> optProduto = produtoRepository.findById(id);
+//        List<Lote> lotes =  optProduto.get().getLotes();
+//        String filtro = null;
+//        Produto produto = new Produto();
+//
+//
+//
+//        for (Map.Entry<String, String> entry : conservacao.entrySet()) {
+//            if (entry.getKey().equals("ordem")) {
+//                if (entry.getValue().equals("L")) {
+//                    filtro = "lote";
+//
+//                }
+//                if (entry.getValue().equals("C")) {
+//                    filtro = "quantidade";
+//                    Collections.sort(lotes, Lote.ordemCrescenteQuantidade);
+//                }
+//                if (entry.getValue().equals("F")) {
+//
+//                    filtro = "validade";
+//                   Collections.sort(lotes, Lote.ordemCrescenteValidade);
+//                }
+//            }
+//        }
+//        if (optProduto.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nenhum produto registrado.");
+//        }
+//        Produto produto = optProduto.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado"));
+//        produto.setLotes(lotes);
+//
+//        return produto;
+//    }
 
     public static boolean temEstoque(Lote lote, Integer quantidade) {
         return registroDeEstoqueRepository.buscaLote(lote.getId()).getQuantidadeAtual() >= quantidade;
