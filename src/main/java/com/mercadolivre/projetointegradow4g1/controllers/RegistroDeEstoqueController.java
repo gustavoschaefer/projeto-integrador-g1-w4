@@ -1,6 +1,7 @@
 package com.mercadolivre.projetointegradow4g1.controllers;
 
 
+import com.mercadolivre.projetointegradow4g1.dto.BuscaLotesDTO;
 import com.mercadolivre.projetointegradow4g1.dto.RegistroDeEstoqueDTO;
 
 import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
@@ -53,9 +54,9 @@ public class RegistroDeEstoqueController {
     }
 
 
-//    @GetMapping("/produtolote/{id}")
-//    public ResponseEntity<List<ProdutoTmp>> obtemProduto(@PathVariable Long id, @RequestParam Map<String, String> conservacao) {
-//        return ResponseEntity.ok(registroDeEstoqueService.listaProdutosPorLote(id, conservacao));
-//    }
+    @GetMapping("/produtolote/{id}")
+    public ResponseEntity<BuscaLotesDTO> obtemProduto(@PathVariable Long id, @RequestParam Map<String, String> conservacao) {
+        return ResponseEntity.ok(registroDeEstoqueService.listaProdutosPorLote(id, conservacao));
+    }
 
 }
