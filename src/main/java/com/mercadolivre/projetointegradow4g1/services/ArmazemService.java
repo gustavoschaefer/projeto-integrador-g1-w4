@@ -1,5 +1,6 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
+import com.mercadolivre.projetointegradow4g1.dto.ProdutoArmazemDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
 import org.springframework.stereotype.Service;
@@ -33,4 +34,7 @@ public class ArmazemService {
         return armazemRepository.findById(armazem.getId()).isPresent();
     }
 
+    public ProdutoArmazemDTO buscaProdutoPorArmazem(Long id){
+        return ProdutoArmazemDTO.converte(armazemRepository.buscaProdutoArmazem(id));
+    }
 }
