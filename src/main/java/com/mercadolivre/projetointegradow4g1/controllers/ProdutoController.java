@@ -30,7 +30,7 @@ public class ProdutoController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<ProdutoDTO> cadastraProduto(@Valid @RequestBody Produto produto, UriComponentsBuilder uriBuilder) {
-        produtoService.salvarProduto(produto);
+        produtoService.salvar(produto);
         URI uri = uriBuilder
                 .path("/produto/{id}")
                 .buildAndExpand(produto.getId())
