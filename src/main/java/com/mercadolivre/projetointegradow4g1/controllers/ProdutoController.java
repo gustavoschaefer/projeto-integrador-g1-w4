@@ -7,11 +7,9 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import com.mercadolivre.projetointegradow4g1.dto.ProdutoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.mercadolivre.projetointegradow4g1.dto.ProdutoDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Produto;
 import com.mercadolivre.projetointegradow4g1.services.ProdutoService;
 
@@ -43,10 +42,4 @@ public class ProdutoController {
     public ResponseEntity<List<ProdutoDTO>> obtemProdutos(@RequestParam Map<String, String> conservacao) {
         return ResponseEntity.ok(ProdutoDTO.converte(produtoService.listaProdutos(conservacao)));
     }
-
-    @GetMapping("/obtem/{id}")
-    public ResponseEntity<ProdutoDTO> obtemProduto(@PathVariable Long id, @RequestParam Map<String, String> conservacao) {
-        return ResponseEntity.ok(ProdutoDTO.converte(produtoService.listaProdutosPorLote(id, conservacao)));
-    }
-
 }

@@ -1,16 +1,18 @@
 package com.mercadolivre.projetointegradow4g1.dto;
 
-import com.mercadolivre.projetointegradow4g1.entities.*;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.mercadolivre.projetointegradow4g1.entities.Carrinho;
+import com.mercadolivre.projetointegradow4g1.entities.CarrinhoAnuncio;
+import com.mercadolivre.projetointegradow4g1.entities.Comprador;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Data
 @Builder

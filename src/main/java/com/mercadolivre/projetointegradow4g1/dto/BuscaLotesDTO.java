@@ -2,14 +2,14 @@ package com.mercadolivre.projetointegradow4g1.dto;
 
 
 
+import java.util.List;
+
 import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository.ProdutoTmp;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.Instant;
-import java.util.List;
 
 
 @Data

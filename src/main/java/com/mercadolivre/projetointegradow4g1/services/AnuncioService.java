@@ -15,7 +15,7 @@ public class AnuncioService {
     private static AnuncioRepository anuncioRepository;
 
     public AnuncioService(AnuncioRepository anuncioRepository) {
-        this.anuncioRepository = anuncioRepository;
+        AnuncioService.anuncioRepository = anuncioRepository;
     }
 
     public Anuncio salvarAnuncio(Anuncio anuncio){
