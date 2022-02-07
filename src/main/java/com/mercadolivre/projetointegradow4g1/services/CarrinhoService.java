@@ -1,15 +1,19 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.*;
-import com.mercadolivre.projetointegradow4g1.repositories.CarrinhoAnuncioRepository;
-import com.mercadolivre.projetointegradow4g1.repositories.CarrinhoRepository;
+import java.math.BigDecimal;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Set;
+import com.mercadolivre.projetointegradow4g1.entities.Carrinho;
+import com.mercadolivre.projetointegradow4g1.entities.CarrinhoAnuncio;
+import com.mercadolivre.projetointegradow4g1.entities.Lote;
+import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
+import com.mercadolivre.projetointegradow4g1.entities.Setor;
+import com.mercadolivre.projetointegradow4g1.repositories.CarrinhoAnuncioRepository;
+import com.mercadolivre.projetointegradow4g1.repositories.CarrinhoRepository;
 
 @Service
 public class CarrinhoService {

@@ -1,17 +1,14 @@
 package com.mercadolivre.projetointegradow4g1.repositories;
 
-import com.mercadolivre.projetointegradow4g1.entities.Lote;
-import com.mercadolivre.projetointegradow4g1.entities.Produto;
-import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
-import com.mercadolivre.projetointegradow4g1.entities.Setor;
+import java.time.Instant;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.Instant;
-import java.util.List;
-import java.util.Set;
+import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
 
 @Repository
 public interface RegistroDeEstoqueRepository extends JpaRepository<RegistroDeEstoque, Long>{

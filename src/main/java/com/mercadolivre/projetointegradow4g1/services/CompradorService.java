@@ -1,11 +1,11 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.Comprador;
-import com.mercadolivre.projetointegradow4g1.entities.Representante;
-import com.mercadolivre.projetointegradow4g1.repositories.CompradorRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.mercadolivre.projetointegradow4g1.entities.Comprador;
+import com.mercadolivre.projetointegradow4g1.repositories.CompradorRepository;
 
 @Service
 public class CompradorService {

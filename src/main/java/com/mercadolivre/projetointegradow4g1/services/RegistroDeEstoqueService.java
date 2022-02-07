@@ -1,18 +1,19 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.dto.BuscaLotesDTO;
-import com.mercadolivre.projetointegradow4g1.entities.Lote;
-import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
-import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.mercadolivre.projetointegradow4g1.dto.BuscaLotesDTO;
+import com.mercadolivre.projetointegradow4g1.entities.Lote;
+import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
+import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
 
 @Service
 public class RegistroDeEstoqueService {
@@ -21,7 +22,7 @@ public class RegistroDeEstoqueService {
 
     
     public RegistroDeEstoqueService(RegistroDeEstoqueRepository registroDeEstoqueRepository) {	
-		this.registroDeEstoqueRepository = registroDeEstoqueRepository;		
+		RegistroDeEstoqueService.registroDeEstoqueRepository = registroDeEstoqueRepository;		
 	}
 
     public RegistroDeEstoque salvarRegistroDeEstoque(RegistroDeEstoque registroDeEstoque) {

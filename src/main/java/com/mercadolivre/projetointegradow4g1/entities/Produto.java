@@ -1,16 +1,25 @@
 package com.mercadolivre.projetointegradow4g1.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
-import lombok.*;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Builder
