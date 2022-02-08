@@ -2,13 +2,10 @@ package com.mercadolivre.projetointegradow4g1.services;
 
 import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
-import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository.ArmazemTmp;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -71,6 +68,8 @@ public class ArmazemServiceTest {
         ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
 
         Armazem armazem = Armazem.builder()
+
+
                 .id(15L)
                 .nome("Armazem 15")
                 .descricao("Descrição Armazem 15")
@@ -81,26 +80,6 @@ public class ArmazemServiceTest {
 
         ArmazemService armazemService = new ArmazemService(mock);
         assertTrue(ArmazemService.existe(armazem));
+
     }
-
-    //TODO Revisar como testar
-//    @Test
-//    void deveBusarProdutoPorArmazem() {
-//        ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
-//        ArmazemTmp mockArmazemTmp = Mockito.mock(ArmazemTmp.class);
-//
-//        Mockito.when(mockArmazemTmp.getArmazem()).thenReturn(1);
-//        Mockito.when(mockArmazemTmp.getQuantidade()).thenReturn(20);
-//        Mockito.when(mockArmazemTmp.getNome()).thenReturn("Carne");
-//
-//        ArmazemTmp armazemTmp = { 1, 20, "Carne" };
-//        List<ArmazemTmp> armazemTmps = new ArrayList<ArmazemTmp>();
-//        armazemTmps.
-//
-//        Mockito.when(mock.buscaProdutoArmazem(1L)).thenReturn(armazemTmps);
-//
-//        ArmazemService armazemService = new ArmazemService(mock);
-//        assertTrue(ArmazemService.existe(armazem));
-//    }
-
 }
