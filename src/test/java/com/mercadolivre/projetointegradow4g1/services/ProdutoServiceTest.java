@@ -6,6 +6,9 @@ import com.mercadolivre.projetointegradow4g1.repositories.ProdutoRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ProdutoServiceTest {
@@ -26,4 +29,24 @@ public class ProdutoServiceTest {
         produtoService.salvar(produto);
         assertNotNull(produto.getId());
     }
+
+    @Test
+    void deveBuscarProduto() {
+        ProdutoRepository mock = Mockito.mock(ProdutoRepository.class);
+
+        Optional<Produto> optionalProduto = Optional.of(Produto.builder()
+                .id(1L)
+                .nome("Produto 1")
+                .conservacao(CondicaoConservacao.FRESCO)
+                .volumeUni(10.0)
+                .build());
+
+        Mockito.when(mock.findById(1L)).thenReturn(optionalProduto);
+
+        ProdutoService produtoService = new ProdutoService(mock);
+        produtoService.buscar(1L);
+
+        assertEquals(1L, optionalProduto.get().getId());
+    }
+
 }
