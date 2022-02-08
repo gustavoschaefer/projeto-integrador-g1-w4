@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,7 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
+
+
 
 @EnableWebSecurity
 @Configuration
@@ -42,17 +42,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/produto/obtem").permitAll()
-                .antMatchers("/").permitAll()
-                .antMatchers("/h2**").permitAll()
-                .antMatchers(HttpMethod.GET, "/setores").permitAll()
-                .antMatchers(HttpMethod.POST, "/auth").permitAll()
-                .antMatchers(HttpMethod.POST, "/registroestoque/salvar").hasAnyAuthority("ADMIN")
+                .antMatchers("/h2/**").permitAll()
+                .antMatchers( HttpMethod.POST,"/auth").permitAll()
+                .antMatchers(HttpMethod.POST, "/registroestoque/salvar").hasAnyAuthority("REPRESENTANTE")
+                .antMatchers(HttpMethod.PUT, "/registroestoque/**").hasAnyAuthority("REPRESENTANTE")
+                .antMatchers(HttpMethod.GET, "/registroestoque/**").hasAnyAuthority("REPRESENTANTE")
+                .antMatchers(HttpMethod.GET, "/quantidade/**").hasAnyAuthority("REPRESENTANTE")
+                .antMatchers(HttpMethod.GET, "setores/buscalote/**").hasAnyAuthority("REPRESENTANTE")
+                .antMatchers(HttpMethod.GET, "/produto/obtem**").hasAnyAuthority("CUSTOMER")
+                .antMatchers(HttpMethod.POST, "/carrinho/salvar").hasAnyAuthority("CUSTOMER")
+                .antMatchers(HttpMethod.PUT, "/carrinho/**").hasAnyAuthority("CUSTOMER")
+                .antMatchers(HttpMethod.GET, "/carrinho**").hasAnyAuthority("CUSTOMER")
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, repository), UsernamePasswordAuthenticationFilter.class);
+
     }
+
     //autenticacao
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

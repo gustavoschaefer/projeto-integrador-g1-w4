@@ -56,31 +56,32 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        // TODO Auto-generated method stub
+        return this.senha;
     }
-
     @Override
     public String getUsername() {
-        return null;
+        // TODO Auto-generated method stub
+        return this.user;
     }
-
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        // TODO Auto-generated method stub
+        return true;
     }
-
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        // TODO Auto-generated method stub
+        return true;
     }
-
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        // TODO Auto-generated method stub
+        return true;
     }
-
     @Override
     public boolean isEnabled() {
-        return false;
+        // TODO Auto-generated method stub
+        return true;
     }
 }
