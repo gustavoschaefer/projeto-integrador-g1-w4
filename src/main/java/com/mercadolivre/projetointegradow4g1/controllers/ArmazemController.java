@@ -1,6 +1,7 @@
 package com.mercadolivre.projetointegradow4g1.controllers;
 
 import com.mercadolivre.projetointegradow4g1.dto.ArmazemDTO;
+import com.mercadolivre.projetointegradow4g1.dto.ProdutoArmazemDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.services.ArmazemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,10 @@ public class ArmazemController {
     @GetMapping("/{id}")
     public ResponseEntity<ArmazemDTO> buscar(@PathVariable Long id) {
         return ResponseEntity.ok(ArmazemDTO.converte(armazemService.buscar(id)));
+    }
+
+    @GetMapping("/quantidade/{id}")
+    public ResponseEntity<ProdutoArmazemDTO> buscarArmazem(@PathVariable Long id) {
+        return ResponseEntity.ok(armazemService.buscaProdutoPorArmazem(id));
     }
 }

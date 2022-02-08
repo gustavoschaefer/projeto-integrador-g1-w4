@@ -17,4 +17,8 @@ spring:
   h2:
     console:
       enabled: true
-      path: /h2  sql:    init:      mode: always      platform: h2
+      path: /h2
+  sql:
+    init:
+      mode: always
+      platform: h2

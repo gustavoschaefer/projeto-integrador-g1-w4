@@ -1,11 +1,8 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.entities.Produto;
-import com.mercadolivre.projetointegradow4g1.entities.Representante;
 import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
 import com.mercadolivre.projetointegradow4g1.repositories.ProdutoRepository;
-import com.mercadolivre.projetointegradow4g1.repositories.RepresentanteRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
