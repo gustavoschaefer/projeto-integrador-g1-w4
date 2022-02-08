@@ -19,6 +19,7 @@ public class Perfil implements GrantedAuthority {
     private Long id;
     private String nome;
 
+
     @Override
     public String getAuthority() {
         // TODO Auto-generated method stub

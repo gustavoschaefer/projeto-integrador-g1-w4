@@ -18,6 +18,7 @@ public class TokenDTO {
         this.token = token;
     }
 
+
     public String getTipo() {
         return tipo;
     }

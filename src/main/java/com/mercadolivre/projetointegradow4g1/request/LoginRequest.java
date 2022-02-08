@@ -7,6 +7,7 @@ public class LoginRequest {
     private String user;
     private String senha;
 
+
     public void setUser(String user) {
         this.user = user;
     }

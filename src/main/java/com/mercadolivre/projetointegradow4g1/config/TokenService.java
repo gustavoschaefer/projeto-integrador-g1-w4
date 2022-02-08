@@ -22,6 +22,7 @@ public class TokenService {
     private String secret;
 
 
+
     public String geraToken(Authentication authentication) {
         Usuario usuarioLogado = (Usuario) authentication.getPrincipal();
         Date hoje = new Date();
