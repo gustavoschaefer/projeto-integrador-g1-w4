@@ -65,29 +65,30 @@ public class ArmazemServiceTest {
         assertEquals(1L, optionalArmazem.get().getId());
     }
 
-//    @Test
-//    void deveExistirArmazem() {
-//        ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
-//
-//        Armazem armazem = Armazem.builder()
-//                .id(2L)
-//                .nome("Armazem 15")
-//                .descricao("Descrição Armazem 15")
-//                .build();
-//        Optional<Armazem> optionalArmazem = Optional.ofNullable(armazem);
-//
-//        Mockito.when(mock.findById(1L)).thenReturn(optionalArmazem);
-//
+    @Test
+    void deveExistirArmazem() {
+        ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
+
+        Armazem armazem = Armazem.builder()
+                .id(2L)
+                .nome("Armazem 15")
+                .descricao("Descrição Armazem 15")
+                .build();
+        Optional<Armazem> optionalArmazem = Optional.ofNullable(armazem);
+
+        Mockito.when(mock.findById(2L)).thenReturn(optionalArmazem);
+        Boolean retorno = optionalArmazem.isPresent();
+
 //        try(MockedStatic<ArmazemService> armazemServiceMockedStatic = Mockito.mockStatic(ArmazemService.class)) {
-////            armazemServiceMockedStatic.when(
-////                    () -> ArmazemService.existe(Mockito.any(Armazem.class))
-////            ).thenReturn(true);
-////            assertTrue(ArmazemService.existe(armazem));
+//            armazemServiceMockedStatic.when(
+//                    () -> ArmazemService.existe(Mockito.any(Armazem.class))
+//            ).thenReturn(true);
+//            assertTrue(ArmazemService.existe(armazem));
 //        }
-//
-//        ArmazemService armazemService = new ArmazemService(mock);
-//        Assertions.assertEquals(optionalArmazem.isPresent(), ArmazemService.existe(armazem));
-//
-//
-//    }
+
+        ArmazemService armazemService = new ArmazemService(mock);
+        Assertions.assertEquals(ArmazemService.existe(armazem), retorno);
+
+
+    }
 }

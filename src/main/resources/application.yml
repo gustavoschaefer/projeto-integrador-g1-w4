@@ -17,4 +17,11 @@ spring:
   h2:
     console:
       enabled: true
-      path: /h2  sql:    init:      mode: always      platform: h2
+      path: /h2
+  sql:
+    init:
+      mode: always
+      platform: h2
+jwt:
+  expiration: 999999999986400000
+  secret: estaehnossasecret
