@@ -54,6 +54,7 @@ public class Usuario implements UserDetails {
         return authorities;
     }
 
+
     @Override
     public String getPassword() {
         // TODO Auto-generated method stub
