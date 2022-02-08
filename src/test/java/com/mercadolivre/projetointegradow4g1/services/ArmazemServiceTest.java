@@ -68,6 +68,8 @@ public class ArmazemServiceTest {
         ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
 
         Armazem armazem = Armazem.builder()
+
+
                 .id(15L)
                 .nome("Armazem 15")
                 .descricao("Descrição Armazem 15")
@@ -78,5 +80,6 @@ public class ArmazemServiceTest {
 
         ArmazemService armazemService = new ArmazemService(mock);
         assertTrue(ArmazemService.existe(armazem));
+
     }
 }
