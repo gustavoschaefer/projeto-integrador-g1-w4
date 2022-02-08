@@ -30,7 +30,7 @@ public class ProdutoService {
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não registrado."));
     }
 
-    public List<Produto> listaProdutos(Map<String, String> conservacao) {
+    public List<Produto> listar(Map<String, String> conservacao) {
         List<Produto> produtos = produtoRepository.findAll();
         for (Map.Entry<String, String> entry : conservacao.entrySet()) {
             if (entry.getKey().equals("conservacao")) {

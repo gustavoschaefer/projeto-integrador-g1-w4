@@ -40,6 +40,6 @@ public class ProdutoController {
 
     @GetMapping("/obtem")
     public ResponseEntity<List<ProdutoDTO>> obtemProdutos(@RequestParam Map<String, String> conservacao) {
-        return ResponseEntity.ok(ProdutoDTO.converte(produtoService.listaProdutos(conservacao)));
+        return ResponseEntity.ok(ProdutoDTO.converte(produtoService.listar(conservacao)));
     }
 }
