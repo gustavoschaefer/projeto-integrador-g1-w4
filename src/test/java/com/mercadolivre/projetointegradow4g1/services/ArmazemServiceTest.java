@@ -5,7 +5,6 @@ import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -65,17 +64,30 @@ public class ArmazemServiceTest {
         assertEquals(1L, optionalArmazem.get().getId());
     }
 
-//    @Test
-//    void deveExistirArmazem() {
-//        ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
-//
-//        Optional<Armazem> optionalArmazem = Optional.of(Armazem.builder().id(1L).nome("Armazem 1").descricao("Descrição Armazem 1").build());
-//
-//        Mockito.when(mock.findById(1L)).thenReturn(optionalArmazem);
-//
-//        ArmazemService armazemService = new ArmazemService(mock);
-//        ArmazemService.existe();
-//
-//        assertEquals(1L, optionalArmazem.get().getId());
-//    }
+    @Test
+    void deveExistirArmazem() {
+        ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
+
+        Armazem armazem = Armazem.builder()
+                .id(2L)
+                .nome("Armazem 15")
+                .descricao("Descrição Armazem 15")
+                .build();
+        Optional<Armazem> optionalArmazem = Optional.ofNullable(armazem);
+
+        Mockito.when(mock.findById(2L)).thenReturn(optionalArmazem);
+        Boolean retorno = optionalArmazem.isPresent();
+
+//        try(MockedStatic<ArmazemService> armazemServiceMockedStatic = Mockito.mockStatic(ArmazemService.class)) {
+//            armazemServiceMockedStatic.when(
+//                    () -> ArmazemService.existe(Mockito.any(Armazem.class))
+//            ).thenReturn(true);
+//            assertTrue(ArmazemService.existe(armazem));
+//        }
+
+        ArmazemService armazemService = new ArmazemService(mock);
+        assertEquals(ArmazemService.existe(armazem), retorno);
+
+
+    }
 }

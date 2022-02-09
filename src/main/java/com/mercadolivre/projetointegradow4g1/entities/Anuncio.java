@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.mercadolivre.projetointegradow4g1.repositories.AnuncioRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -50,4 +51,6 @@ public class Anuncio {
     @JsonIgnore
     private Set<CarrinhoAnuncio> carrinhoAnuncios;
 
+    public void thenReturn(AnuncioRepository mock) {
+    }
 }
