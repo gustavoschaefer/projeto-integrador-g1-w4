@@ -1,12 +1,10 @@
 package com.mercadolivre.projetointegradow4g1.entities;
 
-import java.util.Map;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -28,8 +26,10 @@ public class Desconto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
+	private Integer quantidade;
+	private Double porcentagem;
+	
+	@ManyToOne
 	Vendedor vendedor;
 	
-	Map<Integer, Double> descontos;
 }

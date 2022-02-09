@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +24,9 @@ public class DescontoController {
 	@Autowired
 	DescontoService descontoService;
 	
-	@PostMapping()
+	@PostMapping("/salvar")
 	public ResponseEntity<DescontoDTO> cadastraDesconto(@RequestBody Desconto desconto, UriComponentsBuilder uriBuilder){
-		descontoService.salvar(desconto.getVendedor(), desconto.getDescontos());
+		descontoService.salvar(desconto.getVendedor(), desconto.getQuantidade(), desconto.getPorcentagem());
 		URI uri = uriBuilder
 				.path("/desconto/{id}")
 				.buildAndExpand(desconto.getId())
@@ -34,7 +35,12 @@ public class DescontoController {
 	}
 	
 	@GetMapping("/listar")
-	public ResponseEntity<List<DescontoDTO>> obtemDescontos(){
+	public ResponseEntity<List<DescontoDTO>> listarDescontos(){
 		return ResponseEntity.ok(DescontoDTO.converte(descontoService.listar()));
+	}
+	
+	@GetMapping("/obter/{id}")
+	public ResponseEntity<DescontoDTO> buscarDescontoPorId(@PathVariable Long id){
+		return ResponseEntity.ok(DescontoDTO.converte(this.descontoService.buscar(id)));		
 	}
 }

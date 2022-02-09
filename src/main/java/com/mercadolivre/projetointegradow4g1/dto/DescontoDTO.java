@@ -1,7 +1,6 @@
 package com.mercadolivre.projetointegradow4g1.dto;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.mercadolivre.projetointegradow4g1.entities.Desconto;
@@ -21,12 +20,14 @@ import lombok.Setter;
 public class DescontoDTO {
 	
 	private Vendedor vendedor;
-	private Map<Integer, Double> descontos;
+	private Integer quantidade;
+	private Double porcentagem;
 	
 	public static Desconto converte(DescontoDTO dto) {
 		Desconto desconto = Desconto.builder()
 				.vendedor(dto.getVendedor())
-				.descontos(dto.getDescontos())				
+				.quantidade(dto.getQuantidade())
+				.porcentagem(dto.getPorcentagem())
 				.build();
 		return desconto;
 	}
@@ -34,7 +35,8 @@ public class DescontoDTO {
 	public static DescontoDTO converte(Desconto desconto) {
 		DescontoDTO dto = DescontoDTO.builder()
 				.vendedor(desconto.getVendedor())
-				.descontos(desconto.getDescontos())
+				.quantidade(desconto.getQuantidade())
+				.porcentagem(desconto.getPorcentagem())
 				.build();
 		return dto;
 	}
