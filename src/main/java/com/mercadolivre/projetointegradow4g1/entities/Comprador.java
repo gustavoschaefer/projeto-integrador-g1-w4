@@ -40,6 +40,9 @@ public class Comprador {
     @JsonIgnore
     private Carrinho carrinho;
 
+    @OneToOne
+    private EstadoDestino estadoDestino;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
