@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/h2/**").permitAll()
                 .antMatchers( HttpMethod.POST,"/auth").permitAll()
-//                .antMatchers("/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/**").hasAnyAuthority("ADMIN")
                 
                 .antMatchers(HttpMethod.POST, "/registroestoque/salvar").hasAnyAuthority("REPRESENTANTE")
                 .antMatchers(HttpMethod.POST, "/destino/salvar").hasAnyAuthority("REPRESENTANTE")
@@ -62,7 +62,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/carrinho/salvar").hasAnyAuthority("CUSTOMER")
                 .antMatchers(HttpMethod.PUT, "/carrinho/**").hasAnyAuthority("CUSTOMER")
                 .antMatchers(HttpMethod.GET, "/carrinho**").hasAnyAuthority("CUSTOMER")
-                
+
+                .antMatchers(HttpMethod.POST, "/carrinhobeta/**").hasAnyAuthority("CUSTOMER")
+                .antMatchers(HttpMethod.PUT, "/carrinhobeta/**").hasAnyAuthority("CUSTOMER")
+                .antMatchers(HttpMethod.GET, "/carrinhobeta**").hasAnyAuthority("CUSTOMER")
+
                 .antMatchers(HttpMethod.GET, "/desconto/*").hasAnyAuthority("SELLER")
                 .antMatchers(HttpMethod.POST, "/desconto/*").hasAnyAuthority("SELLER")
                 

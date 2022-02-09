@@ -4,31 +4,32 @@ import com.mercadolivre.projetointegradow4g1.entities.*;
 import com.mercadolivre.projetointegradow4g1.repositories.CarrinhoAnuncioRepository;
 import com.mercadolivre.projetointegradow4g1.repositories.CarrinhoRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
+@Service
 public class CarrinhoServiceBeta {
     private final CarrinhoRepository carrinhoRepository;
     private final CarrinhoAnuncioRepository carrinhoAnuncioRepository;
 
-
     public CarrinhoServiceBeta(CarrinhoRepository carrinhoRepository, CarrinhoAnuncioRepository carrinhoAnuncioRepository, CarrinhoService carrinhoService) {
         this.carrinhoRepository = carrinhoRepository;
         this.carrinhoAnuncioRepository = carrinhoAnuncioRepository;
-
     }
 
     public Carrinho salvar(Carrinho carrinho) {
-
         //validações
         validaComprador(carrinho);
 
-
         BigDecimal precoTotal = new BigDecimal(0);
         Integer qtde = 0;
-        for (CarrinhoAnuncio carrinhoAnuncio : carrinho.getCarrinhoAnuncios()){
+        Vendedor vendedor = new Vendedor();
+        for (CarrinhoAnuncio carrinhoAnuncio : carrinho.getCarrinhoAnuncios()) {
+            vendedor = carrinhoAnuncio.getAnuncio().getVendedor();
             validaQtdEstoque(carrinhoAnuncio);
             confereValidade(carrinhoAnuncio);
             precoTotal = precoTotal.add(AnuncioService.buscarAnuncio(carrinhoAnuncio.getAnuncio().getId()).getPreco().multiply(new BigDecimal(carrinhoAnuncio.getQuantidade())));
@@ -37,6 +38,15 @@ public class CarrinhoServiceBeta {
             atualizaVolumeSetor(carrinhoAnuncio, carrinhoAnuncio.getQuantidade());
         }
 
+        BigDecimal valorDesconto = new BigDecimal(0);
+        Map<Integer,Double> descontos = DescontoService.buscaDescontosVendedor(vendedor);
+        for (Map.Entry<Integer,Double> entry : descontos.entrySet()) {
+            if (qtde >= entry.getKey()) {
+                valorDesconto = precoTotal.multiply(BigDecimal.valueOf(entry.getValue()));
+            }
+        }
+
+        carrinho.setValorDesconto(valorDesconto);
         carrinho.setPrecoTotal(precoTotal);
         carrinho.setValorFrete(EstadoDestinoService.calculaFrete(carrinho.getComprador().getEstadoDestino().getSigla(), qtde));
         Carrinho carrinhoRet = this.carrinhoRepository.save(carrinho);
@@ -47,6 +57,16 @@ public class CarrinhoServiceBeta {
         }
         return carrinhoRet;
     }
+
+    public List<Carrinho> listar(){
+        return this.carrinhoRepository.findAll();
+    }
+
+    public Carrinho buscar(Long id) {
+        return this.carrinhoRepository.findById(id)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Carrinho não registrado."));
+    }
+
 
     private void validaComprador(Carrinho carrinho) {
         if (!CompradorService.existe(carrinho.getComprador())) {
