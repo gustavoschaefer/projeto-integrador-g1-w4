@@ -1,6 +1,5 @@
 package com.mercadolivre.projetointegradow4g1.controllers;
 
-
 import com.mercadolivre.projetointegradow4g1.dto.VendedorDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Vendedor;
 import com.mercadolivre.projetointegradow4g1.services.VendedorService;

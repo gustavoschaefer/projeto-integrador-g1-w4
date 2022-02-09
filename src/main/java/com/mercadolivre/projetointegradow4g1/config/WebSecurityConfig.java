@@ -45,17 +45,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2/**").permitAll()
                 .antMatchers( HttpMethod.POST,"/auth").permitAll()
                 .antMatchers("/**").hasAnyAuthority("ADMIN")
+                
                 .antMatchers(HttpMethod.POST, "/registroestoque/salvar").hasAnyAuthority("REPRESENTANTE")
                 .antMatchers(HttpMethod.POST, "/destino/salvar").hasAnyAuthority("REPRESENTANTE")
                 .antMatchers(HttpMethod.GET, "/destino/**").hasAnyAuthority("REPRESENTANTE")
                 .antMatchers(HttpMethod.PUT, "/registroestoque/**").hasAnyAuthority("REPRESENTANTE")
                 .antMatchers(HttpMethod.GET, "/registroestoque/**").hasAnyAuthority("REPRESENTANTE")
+                
                 .antMatchers(HttpMethod.GET, "/quantidade/**").hasAnyAuthority("REPRESENTANTE")
+                
                 .antMatchers(HttpMethod.GET, "setores/buscalote/**").hasAnyAuthority("REPRESENTANTE")
+                
                 .antMatchers(HttpMethod.GET, "/produto/obtem**").hasAnyAuthority("CUSTOMER")
+                
                 .antMatchers(HttpMethod.POST, "/carrinho/salvar").hasAnyAuthority("CUSTOMER")
                 .antMatchers(HttpMethod.PUT, "/carrinho/**").hasAnyAuthority("CUSTOMER")
                 .antMatchers(HttpMethod.GET, "/carrinho**").hasAnyAuthority("CUSTOMER")
+                
+                .antMatchers(HttpMethod.GET, "/desconto/*").hasAnyAuthority("SELLER")
+                .antMatchers(HttpMethod.POST, "/desconto/*").hasAnyAuthority("SELLER")
+                
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
