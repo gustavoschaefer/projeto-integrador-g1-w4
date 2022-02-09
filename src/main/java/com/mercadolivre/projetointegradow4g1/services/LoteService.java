@@ -19,8 +19,8 @@ public class LoteService {
 		LoteService.repository = repository;
 	}
 
-	public void salvar(Lote lote) {
-		LoteService.repository.save(lote);
+	public Lote salvar(Lote lote) {
+		return LoteService.repository.save(lote);
 	}
 
 	public List<Lote> listar() {

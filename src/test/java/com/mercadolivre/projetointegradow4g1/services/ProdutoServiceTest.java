@@ -6,9 +6,7 @@ import com.mercadolivre.projetointegradow4g1.repositories.ProdutoRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -83,6 +81,4 @@ public class ProdutoServiceTest {
                 produtoService.listar(Map.of("conservacao", "FS")));
         assertTrue(exception.getMessage().contains("Nenhum produto registrado."));
     }
-
-
 }

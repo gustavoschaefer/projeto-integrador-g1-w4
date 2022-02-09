@@ -31,7 +31,7 @@ public class SetorController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<SetorDTO> buscar(@PathVariable Long id) {
-		return ResponseEntity.ok(SetorDTO.converte(service.obter(id)));
+		return ResponseEntity.ok(SetorDTO.converte(service.buscar(id)));
 	}
 
 	@PostMapping
