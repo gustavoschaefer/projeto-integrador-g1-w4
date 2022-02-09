@@ -1,13 +1,14 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.Representante;
-import com.mercadolivre.projetointegradow4g1.repositories.RepresentanteRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-import java.util.Optional;
+import com.mercadolivre.projetointegradow4g1.entities.Representante;
+import com.mercadolivre.projetointegradow4g1.repositories.RepresentanteRepository;
 
 @Service
 public class RepresentanteService {
@@ -22,7 +23,7 @@ public class RepresentanteService {
         if (ArmazemService.existe(representante.getArmazem())) {
             return representanteRepository.save(representante);
         } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Representante invalido.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Armazém inválido.");
         }
     }
 

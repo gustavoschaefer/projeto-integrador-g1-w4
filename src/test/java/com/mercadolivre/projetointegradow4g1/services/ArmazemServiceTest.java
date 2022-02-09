@@ -1,14 +1,18 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.Armazem;
-import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import com.mercadolivre.projetointegradow4g1.entities.Armazem;
+import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
 
 public class ArmazemServiceTest {
 

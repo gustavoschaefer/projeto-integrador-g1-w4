@@ -1,17 +1,21 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.Armazem;
-import com.mercadolivre.projetointegradow4g1.entities.Representante;
-import com.mercadolivre.projetointegradow4g1.repositories.RepresentanteRepository;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
+import com.mercadolivre.projetointegradow4g1.entities.Armazem;
+import com.mercadolivre.projetointegradow4g1.entities.Representante;
+import com.mercadolivre.projetointegradow4g1.repositories.RepresentanteRepository;
 
 public class RepresentanteServiceTest {
 
@@ -72,7 +76,7 @@ public class RepresentanteServiceTest {
 
             exception = assertThrows(ResponseStatusException.class, () ->
                     representanteService.salvar(representante));
-            assertTrue(exception.getMessage().contains("Representante invalido."));
+            assertTrue(exception.getMessage().contains("Armazém inválido."));
         }
 
     }
