@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -32,6 +34,10 @@ public class CarrinhoBetaDTO {
                 .valorFrete(carrinho.getValorFrete())
                 .precoTotal(carrinho.getPrecoTotal())
                 .build();
+    }
+
+    public static List<CarrinhoBetaDTO> converte(List<Carrinho> carrinhos) {
+        return carrinhos.stream().map(c -> converte(c)).collect(Collectors.toList());
     }
 
 }
