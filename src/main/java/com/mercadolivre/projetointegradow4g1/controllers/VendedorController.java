@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vendedores")
+@RequestMapping("/vendedor")
 public class VendedorController {
 
     @Autowired
@@ -22,9 +22,9 @@ public class VendedorController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<VendedorDTO> cadastraVendedor(@Valid @RequestBody Vendedor vendedor, UriComponentsBuilder uriBuilder) {
-        vendedorService.salvarVendedor(vendedor);
+        vendedorService.salvar(vendedor);
         URI uri = uriBuilder
-                .path("/vendedores/{id}")
+                .path("/vendedor/{id}")
                 .buildAndExpand(vendedor.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(VendedorDTO.converte(vendedor));
@@ -32,11 +32,11 @@ public class VendedorController {
 
     @GetMapping("/obtem")
     public ResponseEntity<List<VendedorDTO>> obtemVendedores() {
-        return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.listaVendedor()));
+        return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.listar()));
     }
 
     @GetMapping("/obtem/{id}")
     public ResponseEntity<VendedorDTO> obtemVendedor(@PathVariable Long id) {
-        return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.buscarVendedor(id)));
+        return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.buscar(id)));
     }
 }

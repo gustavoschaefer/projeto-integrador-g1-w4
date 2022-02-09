@@ -11,21 +11,26 @@ import com.mercadolivre.projetointegradow4g1.repositories.VendedorRepository;
 @Service
 public class VendedorService {
 
-    VendedorRepository vendedorRepository;
+    private static VendedorRepository vendedorRepository;
 
     public VendedorService(VendedorRepository vendedorRepository) {
-        this.vendedorRepository = vendedorRepository;
+        VendedorService.vendedorRepository = vendedorRepository;
     }
 
-    public void salvarVendedor(Vendedor vendedor){
-        this.vendedorRepository.save(vendedor);
+    public void salvar(Vendedor vendedor){
+        VendedorService.vendedorRepository.save(vendedor);
     }
 
-    public List<Vendedor> listaVendedor(){
-        return this.vendedorRepository.findAll();
+    public List<Vendedor> listar(){
+        return VendedorService.vendedorRepository.findAll();
     }
-    public Vendedor buscarVendedor(Long id){
+    
+    public Vendedor buscar(Long id){
         Optional<Vendedor> vendedor = vendedorRepository.findById(id);
         return vendedor.get();
+    }
+    
+    public static boolean existe(Long id) {
+    	return vendedorRepository.findById(id).isPresent();
     }
 }

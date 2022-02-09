@@ -120,8 +120,7 @@ public class SetorServiceTest {
 
         Mockito.when(mock.findById(1L)).thenReturn(optionalSetor);
 
-        SetorService setorService = new SetorService(mock);
-
+        new SetorService(mock);
         assertTrue(SetorService.existe(setor));
     }
 	
@@ -144,8 +143,7 @@ public class SetorServiceTest {
         
         Optional<Setor> optionalSetor = Optional.of(setor);
         Mockito.when(mock.findById(1L)).thenReturn(optionalSetor);
-        SetorService setorService = new SetorService(mock);
-        
+        new SetorService(mock);
         assertTrue(SetorService.temCapacidade(optionalSetor.get(), 40.0));
 	}
 	
