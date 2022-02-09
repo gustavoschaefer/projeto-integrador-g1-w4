@@ -3,10 +3,12 @@ package com.mercadolivre.projetointegradow4g1.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.mercadolivre.projetointegradow4g1.entities.Vendedor;
 import com.mercadolivre.projetointegradow4g1.repositories.VendedorRepository;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class VendedorService {
@@ -16,18 +18,18 @@ public class VendedorService {
     public VendedorService(VendedorRepository vendedorRepository) {
         VendedorService.vendedorRepository = vendedorRepository;
     }
-
-    public void salvar(Vendedor vendedor){
-        VendedorService.vendedorRepository.save(vendedor);
+  
+    public void salvar(Vendedor vendedor) {
+        this.vendedorRepository.save(vendedor);
     }
 
-    public List<Vendedor> listar(){
-        return VendedorService.vendedorRepository.findAll();
+    public Vendedor buscar(Long id) {
+        return vendedorRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Vendedor não cadastrado."));
     }
-    
-    public Vendedor buscar(Long id){
-        Optional<Vendedor> vendedor = vendedorRepository.findById(id);
-        return vendedor.get();
+
+    public List<Vendedor> listar() {
+        return this.vendedorRepository.findAll();
     }
     
     public static boolean existe(Long id) {
