@@ -24,6 +24,7 @@ insert into tb_comprador (id, carrinho_id, nome) values (null, null, 'Maria Gree
 
 
 
+insert into users (username, password, enabled) values('admin', '$2a$10$FnSsqc9hnfZ.HLR0HDZ0gOGbNnd1yit.sZitZVibdCgle1E6cwL4a', '1');
 insert into users (username, password, enabled) values('andre', '$2a$10$FnSsqc9hnfZ.HLR0HDZ0gOGbNnd1yit.sZitZVibdCgle1E6cwL4a', '1');
 insert into users (username, password, enabled)  values('kenyo', '$2a$10$FnSsqc9hnfZ.HLR0HDZ0gOGbNnd1yit.sZitZVibdCgle1E6cwL4a', '1');
 
@@ -32,6 +33,7 @@ insert into perfil(nome) values ('CUSTOMER');
 insert into perfil(nome) values ('SELLER');
 insert into perfil(nome) values ('REPRESENTANTE');
 
+insert into users_perfis (usuario_username, perfis_id) values ('admin',1);
 insert into users_perfis (usuario_username, perfis_id) values ('andre',2);
 insert into users_perfis (usuario_username, perfis_id) values ('kenyo',4);
 

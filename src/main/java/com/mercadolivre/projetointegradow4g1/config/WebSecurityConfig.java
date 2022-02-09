@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/h2/**").permitAll()
                 .antMatchers( HttpMethod.POST,"/auth").permitAll()
+                .antMatchers("/**").hasAnyAuthority("ADMIN")
                 .antMatchers(HttpMethod.POST, "/registroestoque/salvar").hasAnyAuthority("REPRESENTANTE")
                 .antMatchers(HttpMethod.PUT, "/registroestoque/**").hasAnyAuthority("REPRESENTANTE")
                 .antMatchers(HttpMethod.GET, "/registroestoque/**").hasAnyAuthority("REPRESENTANTE")
@@ -58,6 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, repository), UsernamePasswordAuthenticationFilter.class);
 
+                http.headers().frameOptions().disable();
     }
 
     //autenticacao
