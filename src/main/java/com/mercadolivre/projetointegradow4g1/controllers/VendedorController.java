@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vendedores")
+@RequestMapping("/vendedor")
 public class VendedorController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class VendedorController {
     public ResponseEntity<VendedorDTO> cadastraVendedor(@Valid @RequestBody Vendedor vendedor, UriComponentsBuilder uriBuilder) {
         vendedorService.salvar(vendedor);
         URI uri = uriBuilder
-                .path("/vendedores/{id}")
+                .path("/vendedor/{id}")
                 .buildAndExpand(vendedor.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(VendedorDTO.converte(vendedor));

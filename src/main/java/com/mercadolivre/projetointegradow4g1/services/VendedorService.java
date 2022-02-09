@@ -13,12 +13,12 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class VendedorService {
 
-    VendedorRepository vendedorRepository;
+    private static VendedorRepository vendedorRepository;
 
     public VendedorService(VendedorRepository vendedorRepository) {
-        this.vendedorRepository = vendedorRepository;
+        VendedorService.vendedorRepository = vendedorRepository;
     }
-
+  
     public void salvar(Vendedor vendedor) {
         this.vendedorRepository.save(vendedor);
     }
@@ -30,5 +30,9 @@ public class VendedorService {
 
     public List<Vendedor> listar() {
         return this.vendedorRepository.findAll();
+    }
+    
+    public static boolean existe(Long id) {
+    	return vendedorRepository.findById(id).isPresent();
     }
 }
