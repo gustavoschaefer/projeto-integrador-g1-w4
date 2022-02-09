@@ -51,6 +51,4 @@ public class Anuncio {
     @JsonIgnore
     private Set<CarrinhoAnuncio> carrinhoAnuncios;
 
-    public void thenReturn(AnuncioRepository mock) {
-    }
 }
