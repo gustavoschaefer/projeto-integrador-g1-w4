@@ -20,7 +20,7 @@ public class VendedorService {
     }
   
     public void salvar(Vendedor vendedor) {
-        this.vendedorRepository.save(vendedor);
+        vendedorRepository.save(vendedor);
     }
 
     public Vendedor buscar(Long id) {
@@ -29,7 +29,7 @@ public class VendedorService {
     }
 
     public List<Vendedor> listar() {
-        return this.vendedorRepository.findAll();
+        return vendedorRepository.findAll();
     }
     
     public static boolean existe(Long id) {

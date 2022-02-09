@@ -69,6 +69,18 @@ public class VendedorServiceTest {
         VendedorService vendedorService = new VendedorService(mock);
         vendedorService.listar();
         assertEquals(2L, vendedorService.listar().get(1).getId());
+    }
 
+    @Test
+    void deveExistirVendedor() {
+        VendedorRepository mock = Mockito.mock(VendedorRepository.class);
+
+        Optional<Vendedor> optionalVendedor = Optional.of(Vendedor.builder().id(1L).nome("Vendedor 1").build());
+
+        Mockito.when(mock.findById(Mockito.anyLong())).thenReturn(optionalVendedor);
+
+        VendedorService vendedorService = new VendedorService(mock);
+
+        assertEquals(1L, vendedorService.buscar(1L).getId());
     }
 }
