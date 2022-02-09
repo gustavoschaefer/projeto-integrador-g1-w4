@@ -19,7 +19,7 @@ public class EstadoDestino {
     private Long id;
 
     private String nome;
-    private Double distanciaOrigem;
+    private String sigla;
 
     @OneToOne
     @JsonIgnore

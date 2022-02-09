@@ -20,7 +20,7 @@ public class EstadoDeDestinoServiceTest {
         EstadoDestino estadoDestino = EstadoDestino.builder()
                 .id(1L)
                 .nome("São Paulo")
-                .distanciaOrigem(200.0)
+                .sigla("SP")
                 .comprador(Comprador.builder().build())
                 .build();
 
@@ -39,14 +39,14 @@ public class EstadoDeDestinoServiceTest {
         EstadoDestino estadoDestino = EstadoDestino.builder()
                 .id(1L)
                 .nome("São Paulo")
-                .distanciaOrigem(200.0)
+                .sigla("SP")
                 .comprador(Comprador.builder().build())
                 .build();
 
         EstadoDestino estadoDestino1 = EstadoDestino.builder()
                 .id(2L)
                 .nome("Rio de Janeiro")
-                .distanciaOrigem(500.0)
+                .sigla("RJ")
                 .comprador(Comprador.builder().build())
                 .build();
 
