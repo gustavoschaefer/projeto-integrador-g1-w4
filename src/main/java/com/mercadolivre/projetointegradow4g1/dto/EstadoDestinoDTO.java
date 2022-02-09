@@ -21,13 +21,13 @@ public class EstadoDestinoDTO {
     private String nome;
 
     @NotNull
-    private Double distanciaOrigem;
+    private String sigla;
     private Comprador comprador;
 
     public static EstadoDestino converte(EstadoDestinoDTO dto){
         EstadoDestino estadoDestino = EstadoDestino.builder()
                 .nome(dto.getNome())
-                .distanciaOrigem(dto.getDistanciaOrigem())
+                .sigla(dto.getSigla())
                 .comprador(dto.getComprador())
                 .build();
         return estadoDestino;
@@ -36,7 +36,7 @@ public class EstadoDestinoDTO {
     public static EstadoDestinoDTO converte(EstadoDestino estadoDestino){
         return EstadoDestinoDTO.builder()
                 .nome(estadoDestino.getNome())
-                .distanciaOrigem(estadoDestino.getDistanciaOrigem())
+                .sigla(estadoDestino.getSigla())
                 .comprador(estadoDestino.getComprador())
                 .build();
     }

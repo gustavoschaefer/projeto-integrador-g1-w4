@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;
 
@@ -33,4 +34,5 @@ public class EstadoDeDestinoController {
     public ResponseEntity<List<EstadoDestinoDTO>> listar() {
         return ResponseEntity.ok(EstadoDestinoDTO.converte(estadoDestinoService.listar()));
     }
+
 }
