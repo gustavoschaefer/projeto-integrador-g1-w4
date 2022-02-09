@@ -1,16 +1,18 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import com.mercadolivre.projetointegradow4g1.dto.ArmazemProdDTO;
+import com.mercadolivre.projetointegradow4g1.dto.ProdutoArmazemDTO;
+import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository.ArmazemTmp;
+import org.mockito.MockedStatic;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
 
@@ -82,5 +84,38 @@ public class ArmazemServiceTest {
 
         ArmazemService armazemService = new ArmazemService(mock);
         assertTrue(ArmazemService.existe(armazem));
+    }
+
+    @Test
+    void deveExistirProdutoPorArmazem() {
+        ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
+        ArmazemTmp armazemTmp = new ArmazemTmp() {
+            @Override
+            public Integer getArmazem() { return 1; }
+            @Override
+            public Integer getQuantidade() { return 20; }
+            @Override
+            public String getNome() { return "Carne"; }
+        };
+        List<ArmazemTmp> armazemTmpList = new ArrayList<>();
+        armazemTmpList.add(armazemTmp);
+
+        ProdutoArmazemDTO produtoArmazemDTO = ProdutoArmazemDTO.builder()
+                .armazens(Arrays.asList(ArmazemProdDTO.builder() .armazemId(1).quantidade(20).build()))
+                .nome("Carne")
+                .build();
+
+        Mockito.when(mock.buscaProdutoArmazem(Mockito.anyLong())).thenReturn(armazemTmpList);
+
+        ArmazemService armazemService = new ArmazemService(mock);
+        armazemService.buscaProdutoPorArmazem(1L);
+
+        try(MockedStatic<ProdutoArmazemDTO> produtoArmazemDTOMockedStatic = Mockito.mockStatic(ProdutoArmazemDTO.class)) {
+            produtoArmazemDTOMockedStatic.when(
+                    () -> ProdutoArmazemDTO.converte(Mockito.anyList())
+            ).thenReturn(produtoArmazemDTO);
+
+            assertEquals(armazemService.buscaProdutoPorArmazem(1L),produtoArmazemDTO);
+        }
     }
 }
