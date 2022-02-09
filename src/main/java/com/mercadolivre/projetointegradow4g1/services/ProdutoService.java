@@ -21,16 +21,16 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    public void salvarProduto(Produto produto) {
+    public void salvar(Produto produto) {
         this.produtoRepository.save(produto);
     }
 
-    public Produto buscarProduto(Long id) {
-        Optional<Produto> produto = produtoRepository.findById(id);
-        return produto.get();
+    public Produto buscar(Long id) {
+        return produtoRepository.findById(id)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não registrado."));
     }
 
-    public List<Produto> listaProdutos(Map<String, String> conservacao) {
+    public List<Produto> listar(Map<String, String> conservacao) {
         List<Produto> produtos = produtoRepository.findAll();
         for (Map.Entry<String, String> entry : conservacao.entrySet()) {
             if (entry.getKey().equals("conservacao")) {

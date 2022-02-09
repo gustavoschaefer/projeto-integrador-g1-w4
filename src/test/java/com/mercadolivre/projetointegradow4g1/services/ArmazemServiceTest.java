@@ -1,15 +1,20 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
+import com.mercadolivre.projetointegradow4g1.dto.ArmazemProdDTO;
+import com.mercadolivre.projetointegradow4g1.dto.ProdutoArmazemDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
+import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository.ArmazemTmp;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ArmazemServiceTest {
 
@@ -69,25 +74,51 @@ public class ArmazemServiceTest {
         ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
 
         Armazem armazem = Armazem.builder()
-                .id(2L)
+
+
+                .id(15L)
                 .nome("Armazem 15")
                 .descricao("Descrição Armazem 15")
                 .build();
-        Optional<Armazem> optionalArmazem = Optional.ofNullable(armazem);
+        Optional<Armazem> optionalArmazem = Optional.of(armazem);
 
-        Mockito.when(mock.findById(2L)).thenReturn(optionalArmazem);
-        Boolean retorno = optionalArmazem.isPresent();
-
-//        try(MockedStatic<ArmazemService> armazemServiceMockedStatic = Mockito.mockStatic(ArmazemService.class)) {
-//            armazemServiceMockedStatic.when(
-//                    () -> ArmazemService.existe(Mockito.any(Armazem.class))
-//            ).thenReturn(true);
-//            assertTrue(ArmazemService.existe(armazem));
-//        }
+        Mockito.when(mock.findById(15L)).thenReturn(optionalArmazem);
 
         ArmazemService armazemService = new ArmazemService(mock);
-        assertEquals(ArmazemService.existe(armazem), retorno);
+        assertTrue(ArmazemService.existe(armazem));
 
+    }
 
+    @Test
+    void deveExistirProdutoPorArmazem() {
+        ArmazemRepository mock = Mockito.mock(ArmazemRepository.class);
+        ArmazemTmp armazemTmp = new ArmazemTmp() {
+            @Override
+            public Integer getArmazem() { return 1; }
+            @Override
+            public Integer getQuantidade() { return 20; }
+            @Override
+            public String getNome() { return "Carne"; }
+        };
+        List<ArmazemTmp> armazemTmpList = new ArrayList<>();
+        armazemTmpList.add(armazemTmp);
+
+        ProdutoArmazemDTO produtoArmazemDTO = ProdutoArmazemDTO.builder()
+                .armazens(Arrays.asList(ArmazemProdDTO.builder() .armazemId(1).quantidade(20).build()))
+                .nome("Carne")
+                .build();
+
+        Mockito.when(mock.buscaProdutoArmazem(Mockito.anyLong())).thenReturn(armazemTmpList);
+
+        ArmazemService armazemService = new ArmazemService(mock);
+        armazemService.buscaProdutoPorArmazem(1L);
+
+        try(MockedStatic<ProdutoArmazemDTO> produtoArmazemDTOMockedStatic = Mockito.mockStatic(ProdutoArmazemDTO.class)) {
+            produtoArmazemDTOMockedStatic.when(
+                    () -> ProdutoArmazemDTO.converte(Mockito.anyList())
+            ).thenReturn(produtoArmazemDTO);
+
+            assertEquals(armazemService.buscaProdutoPorArmazem(1L),produtoArmazemDTO);
+        }
     }
 }

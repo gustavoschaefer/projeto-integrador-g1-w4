@@ -1,11 +1,13 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
+import com.mercadolivre.projetointegradow4g1.dto.ProdutoArmazemDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArmazemService {
@@ -25,12 +27,15 @@ public class ArmazemService {
     }
 
     public Armazem buscar(Long id) {
-        Optional<Armazem> optional = armazemRepository.findById(id);
-        return optional.orElse(new Armazem());
+        return armazemRepository.findById(id)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Armazem não registrado."));
     }
 
-    public static boolean existe(Armazem armazem) {
+    public synchronized static boolean existe(Armazem armazem) {
         return armazemRepository.findById(armazem.getId()).isPresent();
     }
 
+    public ProdutoArmazemDTO buscaProdutoPorArmazem(Long id) {
+        return ProdutoArmazemDTO.converte(armazemRepository.buscaProdutoArmazem(id));
+    }
 }

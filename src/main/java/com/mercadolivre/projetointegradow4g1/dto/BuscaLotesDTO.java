@@ -33,9 +33,4 @@ public class BuscaLotesDTO {
 
     }
 
-//    public static List<BuscaLotesDTO> converte(List<ProdutoTmp> produtoTmps) {
-//        return produtoTmps.stream().map(a -> converte(a)).collect(Collectors.toList());
-//    }
-
-
 }

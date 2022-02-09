@@ -30,7 +30,7 @@ public class ProdutoController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<ProdutoDTO> cadastraProduto(@Valid @RequestBody Produto produto, UriComponentsBuilder uriBuilder) {
-        produtoService.salvarProduto(produto);
+        produtoService.salvar(produto);
         URI uri = uriBuilder
                 .path("/produto/{id}")
                 .buildAndExpand(produto.getId())
@@ -40,6 +40,6 @@ public class ProdutoController {
 
     @GetMapping("/obtem")
     public ResponseEntity<List<ProdutoDTO>> obtemProdutos(@RequestParam Map<String, String> conservacao) {
-        return ResponseEntity.ok(ProdutoDTO.converte(produtoService.listaProdutos(conservacao)));
+        return ResponseEntity.ok(ProdutoDTO.converte(produtoService.listar(conservacao)));
     }
 }
