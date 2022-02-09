@@ -43,6 +43,10 @@ public class Carrinho {
     @OneToOne
     private Compra compra;
 
+    BigDecimal valorFrete;
+
+    BigDecimal valorDesconto;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
