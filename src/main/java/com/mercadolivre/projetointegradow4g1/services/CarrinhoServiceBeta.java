@@ -24,17 +24,21 @@ public class CarrinhoServiceBeta {
 
         //validações
         validaComprador(carrinho);
+
+
         BigDecimal precoTotal = new BigDecimal(0);
+        Integer qtde = 0;
         for (CarrinhoAnuncio carrinhoAnuncio : carrinho.getCarrinhoAnuncios()){
             validaQtdEstoque(carrinhoAnuncio);
             confereValidade(carrinhoAnuncio);
             precoTotal = precoTotal.add(AnuncioService.buscarAnuncio(carrinhoAnuncio.getAnuncio().getId()).getPreco().multiply(new BigDecimal(carrinhoAnuncio.getQuantidade())));
+            qtde += carrinhoAnuncio.getQuantidade();
             LoteService.atualizaQuantidade(carrinhoAnuncio.getAnuncio().getLote(), -carrinhoAnuncio.getQuantidade());
             atualizaVolumeSetor(carrinhoAnuncio, carrinhoAnuncio.getQuantidade());
         }
 
         carrinho.setPrecoTotal(precoTotal);
-
+        carrinho.setValorFrete(EstadoDestinoService.calculaFrete(carrinho.getComprador().getEstadoDestino().getSigla(), qtde));
         Carrinho carrinhoRet = this.carrinhoRepository.save(carrinho);
         List<CarrinhoAnuncio> carrinhoAnuncios = carrinho.getCarrinhoAnuncios();
         for (CarrinhoAnuncio c: carrinhoAnuncios ) {
