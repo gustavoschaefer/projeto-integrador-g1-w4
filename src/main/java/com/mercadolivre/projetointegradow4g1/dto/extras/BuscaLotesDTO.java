@@ -1,4 +1,4 @@
-package com.mercadolivre.projetointegradow4g1.dto;
+package com.mercadolivre.projetointegradow4g1.dto.extras;
 
 
 

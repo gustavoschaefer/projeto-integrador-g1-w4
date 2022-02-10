@@ -1,18 +1,19 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.entities.Anuncio;
-import com.mercadolivre.projetointegradow4g1.entities.Lote;
-import com.mercadolivre.projetointegradow4g1.entities.Vendedor;
-import com.mercadolivre.projetointegradow4g1.repositories.AnuncioRepository;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import com.mercadolivre.projetointegradow4g1.entities.Anuncio;
+import com.mercadolivre.projetointegradow4g1.entities.Lote;
+import com.mercadolivre.projetointegradow4g1.entities.Vendedor;
+import com.mercadolivre.projetointegradow4g1.repositories.AnuncioRepository;
 
 public class AnuncioServiceTest {
 
@@ -88,10 +89,7 @@ public class AnuncioServiceTest {
 
         Mockito.when(mock.findById(1L)).thenReturn(Optional.ofNullable(anuncio));
 
-        AnuncioService anuncioService = new AnuncioService(mock);
+        new AnuncioService(mock);
         assertEquals(AnuncioService.buscar(1L), anuncio);
-
     }
 }
-
-

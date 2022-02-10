@@ -1,6 +1,6 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.dto.BuscaLotesDTO;
+import com.mercadolivre.projetointegradow4g1.dto.extras.BuscaLotesDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Lote;
 import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
 import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
