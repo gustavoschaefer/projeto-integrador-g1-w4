@@ -1,4 +1,4 @@
-package com.mercadolivre.projetointegradow4g1.services;
+package com.mercadolivre.projetointegradow4g1.services.unit.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import com.mercadolivre.projetointegradow4g1.services.ArmazemService;
+import com.mercadolivre.projetointegradow4g1.services.RepresentanteService;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;

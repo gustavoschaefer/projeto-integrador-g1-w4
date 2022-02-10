@@ -1,4 +1,4 @@
-package com.mercadolivre.projetointegradow4g1.services;
+package com.mercadolivre.projetointegradow4g1.services.unit.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -14,6 +14,7 @@ import com.mercadolivre.projetointegradow4g1.entities.Anuncio;
 import com.mercadolivre.projetointegradow4g1.entities.Lote;
 import com.mercadolivre.projetointegradow4g1.entities.Vendedor;
 import com.mercadolivre.projetointegradow4g1.repositories.AnuncioRepository;
+import com.mercadolivre.projetointegradow4g1.services.AnuncioService;
 
 public class AnuncioServiceTest {
 

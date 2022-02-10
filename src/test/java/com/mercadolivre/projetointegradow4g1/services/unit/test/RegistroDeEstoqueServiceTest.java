@@ -1,4 +1,4 @@
-package com.mercadolivre.projetointegradow4g1.services;
+package com.mercadolivre.projetointegradow4g1.services.unit.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -20,6 +20,9 @@ import com.mercadolivre.projetointegradow4g1.entities.Representante;
 import com.mercadolivre.projetointegradow4g1.entities.Setor;
 import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
 import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
+import com.mercadolivre.projetointegradow4g1.services.RegistroDeEstoqueService;
+import com.mercadolivre.projetointegradow4g1.services.RepresentanteService;
+import com.mercadolivre.projetointegradow4g1.services.SetorService;
 
 public class RegistroDeEstoqueServiceTest {
 

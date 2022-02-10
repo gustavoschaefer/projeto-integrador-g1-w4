@@ -1,4 +1,4 @@
-package com.mercadolivre.projetointegradow4g1.services;
+package com.mercadolivre.projetointegradow4g1.services.unit.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -18,6 +18,7 @@ import com.mercadolivre.projetointegradow4g1.dto.extras.ProdutoArmazemDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
 import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository.ArmazemTmp;
+import com.mercadolivre.projetointegradow4g1.services.ArmazemService;
 
 public class ArmazemServiceTest {
 
