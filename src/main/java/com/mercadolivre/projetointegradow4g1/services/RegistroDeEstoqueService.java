@@ -24,7 +24,7 @@ public class RegistroDeEstoqueService {
 		RegistroDeEstoqueService.registroDeEstoqueRepository = registroDeEstoqueRepository;		
 	}
 
-    public RegistroDeEstoque salvarRegistroDeEstoque(RegistroDeEstoque registroDeEstoque) {
+    public RegistroDeEstoque salvar(RegistroDeEstoque registroDeEstoque) {
 
         if (!RepresentanteService.existeNoArmazem(registroDeEstoque.getRepresentante(), registroDeEstoque.getSetor().getArmazem().getId())){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Representante não cadastrado no Armazem informado.");
@@ -55,12 +55,12 @@ public class RegistroDeEstoqueService {
         return registroDeEstoqueRepository.findAll();
     }
 
-    public RegistroDeEstoque buscarRegistroDeEstoque(Long id){
+    public RegistroDeEstoque buscar(Long id){
         Optional<RegistroDeEstoque> registroDeEstoque = registroDeEstoqueRepository.findById(id);
         return registroDeEstoque.orElse(new RegistroDeEstoque());
     }
 
-    public RegistroDeEstoque atualizarRegistroDeEstoque(Long id, RegistroDeEstoque registroDeEstoque) {
+    public RegistroDeEstoque atualizar(Long id, RegistroDeEstoque registroDeEstoque) {
         RegistroDeEstoque registroDeEstoqueRet = registroDeEstoqueRepository.getById(id);
         registroDeEstoqueRet.setData(registroDeEstoque.getData());
         registroDeEstoqueRet.setSetor(registroDeEstoque.getSetor());

@@ -32,7 +32,7 @@ public class LoteController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<LoteDTO> buscar(@PathVariable Long id) {
-		return ResponseEntity.ok(LoteDTO.converte(LoteService.obter(id)));
+		return ResponseEntity.ok(LoteDTO.converte(LoteService.buscar(id)));
 	}
 	
 	@PostMapping

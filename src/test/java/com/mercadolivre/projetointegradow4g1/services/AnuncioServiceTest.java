@@ -32,7 +32,7 @@ public class AnuncioServiceTest {
         Mockito.when(mock.save(Mockito.any(Anuncio.class))).thenReturn(anuncio);
 
         AnuncioService anuncioService = new AnuncioService(mock);
-        anuncioService.salvarAnuncio(anuncio);
+        anuncioService.salvar(anuncio);
         assertNotNull(anuncio.getId());
 
     }
@@ -89,7 +89,7 @@ public class AnuncioServiceTest {
         Mockito.when(mock.findById(1L)).thenReturn(Optional.ofNullable(anuncio));
 
         AnuncioService anuncioService = new AnuncioService(mock);
-        assertEquals(AnuncioService.buscarAnuncio(1L), anuncio);
+        assertEquals(AnuncioService.buscar(1L), anuncio);
 
     }
 }

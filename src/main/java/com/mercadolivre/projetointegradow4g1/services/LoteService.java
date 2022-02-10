@@ -27,7 +27,7 @@ public class LoteService {
 		return LoteService.repository.findAll();
 	}
 
-	public static Lote obter(Long id) {
+	public static Lote buscar(Long id) {
 		Optional<Lote> op = LoteService.repository.findById(id);
 		return op.orElse(new Lote());
 	}

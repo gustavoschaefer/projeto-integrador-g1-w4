@@ -82,7 +82,7 @@ public class RegistroDeEstoqueServiceTest {
                         () -> SetorService.temCapacidade(Mockito.any(Setor.class),Mockito.anyDouble())
                 ).thenReturn(true);
 
-                registroDeEstoqueService.salvarRegistroDeEstoque(registroDeEstoque);
+                registroDeEstoqueService.salvar(registroDeEstoque);
                 assertNotNull(registroDeEstoque.getId());
             }
         }
@@ -226,7 +226,7 @@ public class RegistroDeEstoqueServiceTest {
 
         Mockito.when(mock.findById(1L)).thenReturn(Optional.ofNullable(registroDeEstoque));
         RegistroDeEstoqueService registroDeEstoqueService = new RegistroDeEstoqueService(mock);
-        registroDeEstoqueService.buscarRegistroDeEstoque(1L);
+        registroDeEstoqueService.buscar(1L);
 
         assertEquals(1L,registroDeEstoque.getId());
     }
@@ -299,7 +299,7 @@ public class RegistroDeEstoqueServiceTest {
                         () -> SetorService.temCapacidade(Mockito.any(Setor.class),Mockito.anyDouble())
                 ).thenReturn(true);
 
-                registroDeEstoqueService.atualizarRegistroDeEstoque(1L, registroDeEstoque);
+                registroDeEstoqueService.atualizar(1L, registroDeEstoque);
 
                 registroDeEstoque.setData(Instant.parse("2018-05-07T15:20:45.765Z"));
                 registroDeEstoque.getSetor().setCapacidadeAtual(300.0);
