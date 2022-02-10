@@ -1,4 +1,4 @@
-package com.mercadolivre.projetointegradow4g1.services;
+package com.mercadolivre.projetointegradow4g1.services.unit.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.mercadolivre.projetointegradow4g1.dto.ArmazemProdDTO;
 import com.mercadolivre.projetointegradow4g1.dto.ProdutoArmazemDTO;
 import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository.ArmazemTmp;
+import com.mercadolivre.projetointegradow4g1.services.ArmazemService;
 import org.mockito.MockedStatic;
 import java.util.ArrayList;
 import java.util.Arrays;

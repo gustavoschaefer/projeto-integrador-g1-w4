@@ -1,9 +1,10 @@
-package com.mercadolivre.projetointegradow4g1.services;
+package com.mercadolivre.projetointegradow4g1.services.unit.test;
 
 import com.mercadolivre.projetointegradow4g1.entities.Anuncio;
 import com.mercadolivre.projetointegradow4g1.entities.Lote;
 import com.mercadolivre.projetointegradow4g1.entities.Vendedor;
 import com.mercadolivre.projetointegradow4g1.repositories.AnuncioRepository;
+import com.mercadolivre.projetointegradow4g1.services.AnuncioService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

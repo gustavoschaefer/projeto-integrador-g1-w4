@@ -1,8 +1,9 @@
-package com.mercadolivre.projetointegradow4g1.services;
+package com.mercadolivre.projetointegradow4g1.services.unit.test;
 
 import com.mercadolivre.projetointegradow4g1.entities.Produto;
 import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
 import com.mercadolivre.projetointegradow4g1.repositories.ProdutoRepository;
+import com.mercadolivre.projetointegradow4g1.services.ProdutoService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.web.server.ResponseStatusException;

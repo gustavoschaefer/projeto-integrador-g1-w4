@@ -1,8 +1,11 @@
-package com.mercadolivre.projetointegradow4g1.services;
+package com.mercadolivre.projetointegradow4g1.services.unit.test;
 
 import com.mercadolivre.projetointegradow4g1.entities.*;
 import com.mercadolivre.projetointegradow4g1.entities.enums.CondicaoConservacao;
 import com.mercadolivre.projetointegradow4g1.repositories.RegistroDeEstoqueRepository;
+import com.mercadolivre.projetointegradow4g1.services.RegistroDeEstoqueService;
+import com.mercadolivre.projetointegradow4g1.services.RepresentanteService;
+import com.mercadolivre.projetointegradow4g1.services.SetorService;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
