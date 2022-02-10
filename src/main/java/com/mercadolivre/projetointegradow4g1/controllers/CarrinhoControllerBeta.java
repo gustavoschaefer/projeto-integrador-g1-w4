@@ -1,20 +1,22 @@
 package com.mercadolivre.projetointegradow4g1.controllers;
 
-import com.mercadolivre.projetointegradow4g1.dto.CarrinhoBetaDTO;
-import com.mercadolivre.projetointegradow4g1.dto.CarrinhoBuscarDTO;
-import com.mercadolivre.projetointegradow4g1.dto.CarrinhoDTO;
-import com.mercadolivre.projetointegradow4g1.dto.CarrinhoSalvarDTO;
-import com.mercadolivre.projetointegradow4g1.entities.Carrinho;
-import com.mercadolivre.projetointegradow4g1.services.CarrinhoService;
-import com.mercadolivre.projetointegradow4g1.services.CarrinhoServiceBeta;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
-
 import java.net.URI;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import com.mercadolivre.projetointegradow4g1.dto.CarrinhoBetaDTO;
+import com.mercadolivre.projetointegradow4g1.dto.CarrinhoDTO;
+import com.mercadolivre.projetointegradow4g1.entities.Carrinho;
+import com.mercadolivre.projetointegradow4g1.services.CarrinhoServiceBeta;
 
 @RestController
 @RequestMapping("/carrinhobeta")
@@ -44,15 +46,4 @@ public class CarrinhoControllerBeta {
         Carrinho carrinho = carrinhoService.buscar(id);
         return ResponseEntity.ok().body(CarrinhoBetaDTO.converte(carrinho));
     }
-
-//    @PutMapping("/{id}")
-//    public ResponseEntity<CarrinhoBuscarDTO> alterar(@PathVariable Long id, @RequestBody CarrinhoDTO dto, UriComponentsBuilder uriBuilder) {
-//        Carrinho carrinho = carrinhoService.alterar(id, CarrinhoDTO.converte(dto));
-//        URI uri = uriBuilder
-//                .path("/carrinho/{id}")
-//                .buildAndExpand(carrinho.getId())
-//                .toUri();
-//        return ResponseEntity.created(uri).body(CarrinhoDTO.converteBuscar(carrinho));
-//    }
-
 }

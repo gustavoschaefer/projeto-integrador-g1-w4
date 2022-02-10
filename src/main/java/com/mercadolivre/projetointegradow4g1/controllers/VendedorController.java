@@ -19,8 +19,8 @@ public class VendedorController {
     @Autowired
     VendedorService vendedorService;
 
-    @PostMapping("/cadastrar")
-    public ResponseEntity<VendedorDTO> cadastraVendedor(@Valid @RequestBody Vendedor vendedor, UriComponentsBuilder uriBuilder) {
+    @PostMapping("/salvar")
+    public ResponseEntity<VendedorDTO> salvar(@Valid @RequestBody Vendedor vendedor, UriComponentsBuilder uriBuilder) {
         vendedorService.salvar(vendedor);
         URI uri = uriBuilder
                 .path("/vendedor/{id}")
@@ -29,13 +29,13 @@ public class VendedorController {
         return ResponseEntity.created(uri).body(VendedorDTO.converte(vendedor));
     }
 
-    @GetMapping("/obtem")
-    public ResponseEntity<List<VendedorDTO>> obtemVendedores() {
+    @GetMapping
+    public ResponseEntity<List<VendedorDTO>> listar() {
         return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.listar()));
     }
 
-    @GetMapping("/obtem/{id}")
-    public ResponseEntity<VendedorDTO> obtemVendedor(@PathVariable Long id) {
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<VendedorDTO> buscar(@PathVariable Long id) {
         return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.buscar(id)));
     }
 }

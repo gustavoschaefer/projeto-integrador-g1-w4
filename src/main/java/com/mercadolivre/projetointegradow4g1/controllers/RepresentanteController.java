@@ -36,7 +36,7 @@ public class RepresentanteController {
         return ResponseEntity.created(uri).body(RepresentanteDTO.converte(rep));
     }
 
-    @GetMapping("/listar")
+    @GetMapping
     public ResponseEntity<List<RepresentanteDTO>> listar() {
         return ResponseEntity.ok(RepresentanteDTO.converte(representanteService.listar()));
     }

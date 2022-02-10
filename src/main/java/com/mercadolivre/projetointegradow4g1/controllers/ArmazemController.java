@@ -30,7 +30,7 @@ public class ArmazemController {
         return ResponseEntity.created(uri).body(ArmazemDTO.converte(arm));
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<ArmazemDTO>> listar() {
         return ResponseEntity.ok(ArmazemDTO.converte(armazemService.listar()));
     }
@@ -41,7 +41,7 @@ public class ArmazemController {
     }
 
     @GetMapping("/quantidade/{id}")
-    public ResponseEntity<ProdutoArmazemDTO> buscarArmazem(@PathVariable Long id) {
+    public ResponseEntity<ProdutoArmazemDTO> buscarProdutosPorArmazem(@PathVariable Long id) {
         return ResponseEntity.ok(armazemService.buscaProdutoPorArmazem(id));
     }
 }

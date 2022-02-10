@@ -28,8 +28,8 @@ public class ProdutoController {
     @Autowired
     ProdutoService produtoService;
 
-    @PostMapping("/cadastrar")
-    public ResponseEntity<ProdutoDTO> cadastraProduto(@Valid @RequestBody Produto produto, UriComponentsBuilder uriBuilder) {
+    @PostMapping("/salvar")
+    public ResponseEntity<ProdutoDTO> salvar(@Valid @RequestBody Produto produto, UriComponentsBuilder uriBuilder) {
         produtoService.salvar(produto);
         URI uri = uriBuilder
                 .path("/produto/{id}")
@@ -38,8 +38,8 @@ public class ProdutoController {
         return ResponseEntity.created(uri).body(ProdutoDTO.converte(produto));
     }
 
-    @GetMapping("/obtem")
-    public ResponseEntity<List<ProdutoDTO>> obtemProdutos(@RequestParam Map<String, String> conservacao) {
+    @GetMapping
+    public ResponseEntity<List<ProdutoDTO>> listar(@RequestParam Map<String, String> conservacao) {
         return ResponseEntity.ok(ProdutoDTO.converte(produtoService.listar(conservacao)));
     }
 }

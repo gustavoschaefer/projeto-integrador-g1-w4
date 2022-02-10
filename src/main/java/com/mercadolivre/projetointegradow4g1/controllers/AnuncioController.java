@@ -27,7 +27,7 @@ public class AnuncioController {
     AnuncioService anuncioService;
 
     @PostMapping("/salvar")
-    public ResponseEntity<AnuncioDTO> salvarAnuncio(@Valid @RequestBody AnuncioDTO anuncio, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<AnuncioDTO> salvar(@Valid @RequestBody AnuncioDTO anuncio, UriComponentsBuilder uriBuilder){
         Anuncio anuncios = anuncioService.salvarAnuncio(AnuncioDTO.converte(anuncio));
         URI uri = uriBuilder
                 .path("/anuncio/{id}")
@@ -35,13 +35,13 @@ public class AnuncioController {
         return ResponseEntity.created(uri).body(AnuncioDTO.converte(anuncios));
     }
 
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<List<AnuncioDTO>> listar() {
         return ResponseEntity.ok(AnuncioDTO.converte(anuncioService.listar()));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AnuncioDTO> buscarAnuncio(@PathVariable Long id){
+    public ResponseEntity<AnuncioDTO> buscar(@PathVariable Long id){
         return ResponseEntity.ok(AnuncioDTO.converte(AnuncioService.buscarAnuncio(id)));
     }
 }

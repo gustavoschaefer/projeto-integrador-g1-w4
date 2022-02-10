@@ -30,7 +30,7 @@ public class RegistroDeEstoqueController {
     RegistroDeEstoqueService registroDeEstoqueService;
 
     @PostMapping("/salvar")
-    public ResponseEntity<RegistroDeEstoqueDTO> salvarRegistroDeEstoque(@RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<RegistroDeEstoqueDTO> salvar(@RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
         RegistroDeEstoque regEstRet = registroDeEstoqueService.salvarRegistroDeEstoque(RegistroDeEstoqueDTO.converte(registroDeEstoque));
         URI uri = uriBuilder
         		.path("/registroestoque/{id}")
@@ -40,7 +40,7 @@ public class RegistroDeEstoqueController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RegistroDeEstoqueDTO> atualizarRegistroDeEstoque(@PathVariable Long id, @RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<RegistroDeEstoqueDTO> atualizar(@PathVariable Long id, @RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
         RegistroDeEstoque regEstRet = registroDeEstoqueService.atualizarRegistroDeEstoque(id, RegistroDeEstoqueDTO.converte(registroDeEstoque));
         URI uri = uriBuilder
                 .path("/registroestoque/{id}")
@@ -50,18 +50,18 @@ public class RegistroDeEstoqueController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RegistroDeEstoqueDTO> buscarRegistroDeEstoque(@PathVariable Long id){
+    public ResponseEntity<RegistroDeEstoqueDTO> buscar(@PathVariable Long id){
         return ResponseEntity.ok(RegistroDeEstoqueDTO.converte(registroDeEstoqueService.buscarRegistroDeEstoque(id)));
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<RegistroDeEstoqueDTO>> listar(){
         return ResponseEntity.ok(RegistroDeEstoqueDTO.converte(RegistroDeEstoqueService.listar()));
     }
 
 
     @GetMapping("/produtolote/{id}")
-    public ResponseEntity<BuscaLotesDTO> obtemProduto(@PathVariable Long id, @RequestParam Map<String, String> conservacao) {
+    public ResponseEntity<BuscaLotesDTO> buscarProduto(@PathVariable Long id, @RequestParam Map<String, String> conservacao) {
         return ResponseEntity.ok(registroDeEstoqueService.listaProdutosPorLote(id, conservacao));
     }
 

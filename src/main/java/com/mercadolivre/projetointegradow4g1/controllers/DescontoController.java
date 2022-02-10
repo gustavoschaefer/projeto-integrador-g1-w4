@@ -25,7 +25,7 @@ public class DescontoController {
 	DescontoService descontoService;
 	
 	@PostMapping("/salvar")
-	public ResponseEntity<DescontoDTO> cadastraDesconto(@RequestBody Desconto desconto, UriComponentsBuilder uriBuilder){
+	public ResponseEntity<DescontoDTO> cadastrar(@RequestBody Desconto desconto, UriComponentsBuilder uriBuilder){
 		descontoService.salvar(desconto.getVendedor(), desconto.getQuantidade(), desconto.getPorcentagem());
 		URI uri = uriBuilder
 				.path("/desconto/{id}")
@@ -34,13 +34,13 @@ public class DescontoController {
 		return ResponseEntity.created(uri).body(DescontoDTO.converte(desconto));
 	}
 	
-	@GetMapping("/listar")
-	public ResponseEntity<List<DescontoDTO>> listarDescontos(){
+	@GetMapping
+	public ResponseEntity<List<DescontoDTO>> listar(){
 		return ResponseEntity.ok(DescontoDTO.converte(descontoService.listar()));
 	}
 	
-	@GetMapping("/obter/{id}")
-	public ResponseEntity<DescontoDTO> buscarDescontoPorId(@PathVariable Long id){
+	@GetMapping("/{id}")
+	public ResponseEntity<DescontoDTO> buscarPorId(@PathVariable Long id){
 		return ResponseEntity.ok(DescontoDTO.converte(this.descontoService.buscar(id)));		
 	}
 }

@@ -17,7 +17,7 @@ import com.mercadolivre.projetointegradow4g1.entities.Setor;
 import com.mercadolivre.projetointegradow4g1.services.SetorService;
 
 @RestController
-@RequestMapping("/setores")
+@RequestMapping("/setor")
 public class SetorController {
 
 	@Autowired

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/autenticar")
 public class AutenticacaoController {
 
     @Autowired
@@ -29,6 +29,5 @@ public class AutenticacaoController {
         Authentication authentication = manager.authenticate(dadosLogin);
         String token = tokenService.geraToken(authentication);
         return ResponseEntity.ok(new TokenDTO(token, "Bearer"));
-
     }
 }
