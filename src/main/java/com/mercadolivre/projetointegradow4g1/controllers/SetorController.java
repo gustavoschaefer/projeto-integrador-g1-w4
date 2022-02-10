@@ -23,6 +23,17 @@ public class SetorController {
 	@Autowired
 	private SetorService service;
 
+	@PostMapping("/salvar")
+	public ResponseEntity<SetorDTO> salvar(@Valid @RequestBody SetorDTO dto, UriComponentsBuilder uriBuilder) {
+		Setor setor = SetorDTO.converte(dto);
+		service.salvar(setor);
+		URI uri = uriBuilder
+				.path("/setor/{id}")
+				.buildAndExpand(setor.getId())
+				.toUri();
+		return ResponseEntity.created(uri).body(SetorDTO.converte(setor));
+	}
+
 	@GetMapping
 	public ResponseEntity<List<Setor>> listar() {
 		List<Setor> lista = service.listar();
@@ -32,17 +43,6 @@ public class SetorController {
 	@GetMapping("/{id}")
 	public ResponseEntity<SetorDTO> buscar(@PathVariable Long id) {
 		return ResponseEntity.ok(SetorDTO.converte(service.buscar(id)));
-	}
-
-	@PostMapping
-	public ResponseEntity<SetorDTO> salvar(@Valid @RequestBody SetorDTO dto, UriComponentsBuilder uriBuilder) {
-		Setor setor = SetorDTO.converte(dto);
-		service.salvar(setor);
-		URI uri = uriBuilder
-				.path("/setores/{id}")
-				.buildAndExpand(setor.getId())
-				.toUri();
-		return ResponseEntity.created(uri).body(SetorDTO.converte(setor));
 	}
 
 	@GetMapping("/buscalote/{id}/{dias}")

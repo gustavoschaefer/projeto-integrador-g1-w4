@@ -27,7 +27,7 @@ import com.mercadolivre.projetointegradow4g1.services.SetorService;
 public class RegistroDeEstoqueServiceTest {
 
     @Test
-    public void deveCadastrarRegistroDeEstoque(){
+    public void deveCadastrarRegistroDeEstoque() {
         RegistroDeEstoqueRepository mock = Mockito.mock(RegistroDeEstoqueRepository.class);
 
         RegistroDeEstoque registroDeEstoque = RegistroDeEstoque.builder()

@@ -23,7 +23,18 @@ public class LoteController {
 	
 	@Autowired
 	private LoteService service;
-	
+
+	@PostMapping("/salvar")
+	public ResponseEntity<LoteDTO> salvar(@RequestBody LoteDTO dto, UriComponentsBuilder uriBuilder){
+		Lote lote = LoteDTO.converte(dto);
+		service.salvar(lote);
+		URI uri = uriBuilder
+				.path("/lote/{id}")
+				.buildAndExpand(lote.getId())
+				.toUri();
+		return ResponseEntity.created(uri).body(LoteDTO.converte(lote));
+	}
+
 	@GetMapping
 	public ResponseEntity<List<Lote>> listar(){
 		List<Lote> lista = service.listar();
@@ -35,14 +46,4 @@ public class LoteController {
 		return ResponseEntity.ok(LoteDTO.converte(LoteService.buscar(id)));
 	}
 	
-	@PostMapping
-	public ResponseEntity<LoteDTO> salvar(@RequestBody LoteDTO dto, UriComponentsBuilder uriBuilder){
-		Lote lote = LoteDTO.converte(dto);
-		service.salvar(lote);
-		URI uri = uriBuilder
-				.path("/lote/{id}")
-				.buildAndExpand(lote.getId())
-				.toUri();
-		return ResponseEntity.created(uri).body(LoteDTO.converte(lote));
-	}
 }

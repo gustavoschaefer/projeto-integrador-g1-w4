@@ -22,13 +22,11 @@ public class EstadoDestinoDTO {
 
     @NotNull
     private String sigla;
-    private Comprador comprador;
 
     public static EstadoDestino converte(EstadoDestinoDTO dto){
         EstadoDestino estadoDestino = EstadoDestino.builder()
                 .nome(dto.getNome())
                 .sigla(dto.getSigla())
-                .comprador(dto.getComprador())
                 .build();
         return estadoDestino;
     }
@@ -37,7 +35,6 @@ public class EstadoDestinoDTO {
         return EstadoDestinoDTO.builder()
                 .nome(estadoDestino.getNome())
                 .sigla(estadoDestino.getSigla())
-                .comprador(estadoDestino.getComprador())
                 .build();
     }
 

@@ -26,9 +26,10 @@ public class SetorDTO {
 	
 	@NotNull
 	private Armazem armazem;
-	
-	@NotEmpty
+
+	@NotNull
 	private Double capacidadeTotal;
+
 	@NotNull
 	private CondicaoConservacao tipo;
 	

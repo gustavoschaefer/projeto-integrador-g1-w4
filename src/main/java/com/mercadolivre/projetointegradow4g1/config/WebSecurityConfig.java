@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/h2/**").permitAll()
-                .antMatchers( HttpMethod.POST,"/auth").permitAll()
+                .antMatchers( HttpMethod.POST,"/autenticar").permitAll()
                 .antMatchers("/**").hasAnyAuthority("ADMIN")
                 
                 .antMatchers(HttpMethod.POST, "/registroestoque/salvar").hasAnyAuthority("REPRESENTANTE")
@@ -66,6 +66,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/carrinhobeta/**").hasAnyAuthority("CUSTOMER")
                 .antMatchers(HttpMethod.PUT, "/carrinhobeta/**").hasAnyAuthority("CUSTOMER")
                 .antMatchers(HttpMethod.GET, "/carrinhobeta**").hasAnyAuthority("CUSTOMER")
+
+                .antMatchers(HttpMethod.GET, "/anuncio/*").hasAnyAuthority("SELLER")
+                .antMatchers(HttpMethod.POST, "/anuncio/*").hasAnyAuthority("SELLER")
 
                 .antMatchers(HttpMethod.GET, "/desconto/*").hasAnyAuthority("SELLER")
                 .antMatchers(HttpMethod.POST, "/desconto/*").hasAnyAuthority("SELLER")
