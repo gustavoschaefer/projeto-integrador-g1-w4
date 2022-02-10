@@ -34,7 +34,7 @@ public class VendedorController {
         return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.listar()));
     }
 
-    @GetMapping("/listar/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<VendedorDTO> buscar(@PathVariable Long id) {
         return ResponseEntity.ok(VendedorDTO.converte(this.vendedorService.buscar(id)));
     }

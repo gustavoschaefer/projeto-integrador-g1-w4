@@ -34,7 +34,7 @@ public class CompraController {
         return ResponseEntity.created(uri).body(CompraDTO.converte(compra));
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping
     public ResponseEntity<List<CompraDTO>> listar(){
         return ResponseEntity.ok().body(CompraDTO.converte(compraService.listar()));
     }

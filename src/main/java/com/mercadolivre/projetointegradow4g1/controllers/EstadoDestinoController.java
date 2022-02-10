@@ -20,7 +20,7 @@ import com.mercadolivre.projetointegradow4g1.services.EstadoDestinoService;
 
 @RestController
 @RequestMapping("/destino")
-public class EstadoDeDestinoController {
+public class EstadoDestinoController {
 
     @Autowired
     EstadoDestinoService estadoDestinoService;

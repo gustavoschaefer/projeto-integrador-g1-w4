@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,6 +42,7 @@ public class Carrinho {
     private Comprador comprador;
 
     @OneToOne
+    @JsonIgnore
     private Compra compra;
 
     BigDecimal valorFrete;

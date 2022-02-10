@@ -56,26 +56,26 @@ public class AnuncioDTO {
         return anuncios.stream().map(AnuncioDTO::converte).collect(Collectors.toList());
     }
 
-    @Override
-    public String toString() {
-        return "AnuncioDTO{" +
-                "titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", lote=" + lote +
-                ", vendedor=" + vendedor +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AnuncioDTO that = (AnuncioDTO) o;
-        return titulo.equals(that.titulo) && descricao.equals(that.descricao) && lote.equals(that.lote) && vendedor.equals(that.vendedor);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(titulo, descricao, lote, vendedor);
-    }
+//    @Override
+//    public String toString() {
+//        return "AnuncioDTO{" +
+//                "titulo='" + titulo + '\'' +
+//                ", descricao='" + descricao + '\'' +
+//                ", lote=" + lote +
+//                ", vendedor=" + vendedor +
+//                '}';
+//    }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        AnuncioDTO that = (AnuncioDTO) o;
+//        return titulo.equals(that.titulo) && descricao.equals(that.descricao) && lote.equals(that.lote) && vendedor.equals(that.vendedor);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(titulo, descricao, lote, vendedor);
+//    }
 }
