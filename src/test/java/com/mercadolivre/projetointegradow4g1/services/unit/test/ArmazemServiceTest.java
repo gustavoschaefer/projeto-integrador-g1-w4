@@ -3,19 +3,22 @@ package com.mercadolivre.projetointegradow4g1.services.unit.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import com.mercadolivre.projetointegradow4g1.dto.ArmazemProdDTO;
-import com.mercadolivre.projetointegradow4g1.dto.ProdutoArmazemDTO;
-import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository.ArmazemTmp;
-import com.mercadolivre.projetointegradow4g1.services.ArmazemService;
-import org.mockito.MockedStatic;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
+
+import com.mercadolivre.projetointegradow4g1.dto.extras.ArmazemProdDTO;
+import com.mercadolivre.projetointegradow4g1.dto.extras.ProdutoArmazemDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository;
+import com.mercadolivre.projetointegradow4g1.repositories.ArmazemRepository.ArmazemTmp;
+import com.mercadolivre.projetointegradow4g1.services.ArmazemService;
 
 public class ArmazemServiceTest {
 
@@ -83,7 +86,7 @@ public class ArmazemServiceTest {
 
         Mockito.when(mock.findById(15L)).thenReturn(optionalArmazem);
 
-        ArmazemService armazemService = new ArmazemService(mock);
+        new ArmazemService(mock);
         assertTrue(ArmazemService.existe(armazem));
     }
 

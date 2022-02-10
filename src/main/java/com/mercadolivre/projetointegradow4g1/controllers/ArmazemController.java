@@ -1,7 +1,7 @@
 package com.mercadolivre.projetointegradow4g1.controllers;
 
 import com.mercadolivre.projetointegradow4g1.dto.ArmazemDTO;
-import com.mercadolivre.projetointegradow4g1.dto.ProdutoArmazemDTO;
+import com.mercadolivre.projetointegradow4g1.dto.extras.ProdutoArmazemDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Armazem;
 import com.mercadolivre.projetointegradow4g1.services.ArmazemService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.mercadolivre.projetointegradow4g1.dto.BuscaLotesDTO;
 import com.mercadolivre.projetointegradow4g1.dto.RegistroDeEstoqueDTO;
+import com.mercadolivre.projetointegradow4g1.dto.extras.BuscaLotesDTO;
 import com.mercadolivre.projetointegradow4g1.entities.RegistroDeEstoque;
 import com.mercadolivre.projetointegradow4g1.services.RegistroDeEstoqueService;
 
@@ -31,7 +31,7 @@ public class RegistroDeEstoqueController {
 
     @PostMapping("/salvar")
     public ResponseEntity<RegistroDeEstoqueDTO> salvar(@RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
-        RegistroDeEstoque regEstRet = registroDeEstoqueService.salvarRegistroDeEstoque(RegistroDeEstoqueDTO.converte(registroDeEstoque));
+        RegistroDeEstoque regEstRet = registroDeEstoqueService.salvar(RegistroDeEstoqueDTO.converte(registroDeEstoque));
         URI uri = uriBuilder
         		.path("/registroestoque/{id}")
                 .buildAndExpand(regEstRet.getId())
@@ -41,7 +41,7 @@ public class RegistroDeEstoqueController {
 
     @PutMapping("/{id}")
     public ResponseEntity<RegistroDeEstoqueDTO> atualizar(@PathVariable Long id, @RequestBody RegistroDeEstoqueDTO registroDeEstoque, UriComponentsBuilder uriBuilder){
-        RegistroDeEstoque regEstRet = registroDeEstoqueService.atualizarRegistroDeEstoque(id, RegistroDeEstoqueDTO.converte(registroDeEstoque));
+        RegistroDeEstoque regEstRet = registroDeEstoqueService.atualizar(id, RegistroDeEstoqueDTO.converte(registroDeEstoque));
         URI uri = uriBuilder
                 .path("/registroestoque/{id}")
                 .buildAndExpand(regEstRet.getId())
@@ -51,7 +51,7 @@ public class RegistroDeEstoqueController {
 
     @GetMapping("/{id}")
     public ResponseEntity<RegistroDeEstoqueDTO> buscar(@PathVariable Long id){
-        return ResponseEntity.ok(RegistroDeEstoqueDTO.converte(registroDeEstoqueService.buscarRegistroDeEstoque(id)));
+        return ResponseEntity.ok(RegistroDeEstoqueDTO.converte(registroDeEstoqueService.buscar(id)));
     }
 
     @GetMapping

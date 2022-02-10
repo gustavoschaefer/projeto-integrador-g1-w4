@@ -15,7 +15,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import com.mercadolivre.projetointegradow4g1.repositories.AnuncioRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,8 +36,6 @@ public class Anuncio {
 
     private String titulo;
     private String descricao;
-
-
     private BigDecimal preco;
 
     @OneToOne
@@ -50,5 +47,4 @@ public class Anuncio {
     @OneToMany(mappedBy = "anuncio")
     @JsonIgnore
     private Set<CarrinhoAnuncio> carrinhoAnuncios;
-
 }

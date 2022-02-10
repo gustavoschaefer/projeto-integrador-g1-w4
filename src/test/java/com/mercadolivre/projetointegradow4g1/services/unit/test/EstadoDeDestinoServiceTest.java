@@ -1,17 +1,18 @@
 package com.mercadolivre.projetointegradow4g1.services.unit.test;
 
-import com.mercadolivre.projetointegradow4g1.entities.*;
-import com.mercadolivre.projetointegradow4g1.repositories.EstadoDestinoRepository;
-import com.mercadolivre.projetointegradow4g1.services.EstadoDestinoService;
-import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import com.mercadolivre.projetointegradow4g1.entities.Comprador;
+import com.mercadolivre.projetointegradow4g1.entities.EstadoDestino;
+import com.mercadolivre.projetointegradow4g1.repositories.EstadoDestinoRepository;
+import com.mercadolivre.projetointegradow4g1.services.EstadoDestinoService;
 
 
 public class EstadoDeDestinoServiceTest {

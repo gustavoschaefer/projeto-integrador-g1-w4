@@ -142,8 +142,7 @@ public class RepresentanteServiceTest {
 
         Mockito.when(mock.findById(1L)).thenReturn(optionalRepresentante);
 
-        RepresentanteService representanteService = new RepresentanteService(mock);
-
+        new RepresentanteService(mock);
         assertTrue(RepresentanteService.existe(representante));
     }
 
@@ -160,9 +159,7 @@ public class RepresentanteServiceTest {
 
         Mockito.when(mock.findById(1L)).thenReturn(optionalRepresentante);
 
-        RepresentanteService representanteService = new RepresentanteService(mock);
-
+        new RepresentanteService(mock);
         assertTrue(RepresentanteService.existeNoArmazem(representante,1L));
     }
-
 }

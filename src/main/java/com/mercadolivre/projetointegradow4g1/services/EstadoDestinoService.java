@@ -1,12 +1,12 @@
 package com.mercadolivre.projetointegradow4g1.services;
 
-import com.mercadolivre.projetointegradow4g1.dto.EstadoDestinoDTO;
-import com.mercadolivre.projetointegradow4g1.entities.EstadoDestino;
-import com.mercadolivre.projetointegradow4g1.repositories.EstadoDestinoRepository;
-import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.mercadolivre.projetointegradow4g1.entities.EstadoDestino;
+import com.mercadolivre.projetointegradow4g1.repositories.EstadoDestinoRepository;
 
 @Service
 public class EstadoDestinoService {

@@ -1,8 +1,8 @@
 package com.mercadolivre.projetointegradow4g1.controllers;
 
-import com.mercadolivre.projetointegradow4g1.dto.CarrinhoBuscarDTO;
 import com.mercadolivre.projetointegradow4g1.dto.CarrinhoDTO;
-import com.mercadolivre.projetointegradow4g1.dto.CarrinhoSalvarDTO;
+import com.mercadolivre.projetointegradow4g1.dto.extras.CarrinhoBuscarDTO;
+import com.mercadolivre.projetointegradow4g1.dto.extras.CarrinhoSalvarDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Carrinho;
 import com.mercadolivre.projetointegradow4g1.services.CarrinhoService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.mercadolivre.projetointegradow4g1.dto.extras.CarrinhoBuscarDTO;
+import com.mercadolivre.projetointegradow4g1.dto.extras.CarrinhoSalvarDTO;
+import com.mercadolivre.projetointegradow4g1.dto.extras.ProdutoCarrinhoDTO;
 import com.mercadolivre.projetointegradow4g1.entities.Carrinho;
 import com.mercadolivre.projetointegradow4g1.entities.CarrinhoAnuncio;
 import com.mercadolivre.projetointegradow4g1.entities.Comprador;

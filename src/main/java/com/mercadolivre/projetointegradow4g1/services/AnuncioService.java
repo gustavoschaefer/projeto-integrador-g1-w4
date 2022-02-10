@@ -20,7 +20,7 @@ public class AnuncioService {
         AnuncioService.anuncioRepository = anuncioRepository;
     }
 
-    public Anuncio salvarAnuncio(Anuncio anuncio){
+    public Anuncio salvar(Anuncio anuncio){
         return anuncioRepository.save(anuncio);
     }
 
@@ -28,7 +28,7 @@ public class AnuncioService {
         return anuncioRepository.findAll();
     }
 
-    public static Anuncio buscarAnuncio(Long id){
+    public static Anuncio buscar(Long id){
         Optional<Anuncio> anuncio = anuncioRepository.findById(id);
         return anuncio.orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Representante não cadastrado no Armazem informado."));
     }
