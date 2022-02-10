@@ -21,6 +21,9 @@
 - [x] Registro de estoque
 - [x] Carrinho de compras
 - [x] Consulta de número total de produtos por armazem
+- [x] Cadastrar anúncio
+- [x] Cadastrar desconto
+- [x] Registro de compra
 
 ## Demonstração da aplicação
 
